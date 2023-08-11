@@ -3,6 +3,9 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 <typeAliases>
-
+	<typeAlias type="dto.MemberDTO" alias="memberDto"/>
+	<typeAlias type="dto.SingleDTO" alias="singleDto"/>
+	<typeAlias type="dto.InningsDTO" alias="inningsDto"/>
+	<typeAlias type="dto.ExpDTO" alias="expDto"/>
 </typeAliases>
 </configuration>
