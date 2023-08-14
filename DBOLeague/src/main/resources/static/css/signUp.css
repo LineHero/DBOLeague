@@ -1,6 +1,39 @@
 @charset "UTF-8";
+@font-face {
+    font-family: 'NeoDGM';
+    src: url('/fonts/neodgm.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 body {
 	width: 1920px;
 	height: 1080px;
+	font-family: 'NeoDGM';
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+
+.wrapper {
+	width: 1416px;
+	height:825px;
+    background: #efefef;
+}
+
+.logo {
+	font-size: 4rem;
+	text-align: center;
+	padding-top: 14rem;
+	padding-bottom: 3rem;
+}
+
+.logo > a {
+	text-decoration: none; /*밑줄 없애기*/
+	color: inherit; /*색변화x*/
+}
+
+.join {
+	display:flex;
+	justify-content:center;
 }
