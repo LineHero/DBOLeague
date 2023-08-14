@@ -3,35 +3,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-
-  <meta charset="UTF-8">
-  <title>게임 메인 화면</title>
-
-  <style>
-  @font-face {
+<meta charset="UTF-8">
+<title>게임 메인 화면</title>
+<script src="../js/jquery-3.6.4.min.js"></script>
+<style>
+@font-face {
     font-family: 'NeoDGM';
     src: url('/fonts/neodgm.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
-  body {
-  margin: 0;
-  padding: 0;
-  background-color: #afea47;
-  font-family: 'NeoDGM'; 
+
+body {
+    width: 1920px;
+    height: 1080px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+   
 }
 
 header {
-  background-color: rgba(255, 255, 255, 0.8);
+  background-color: #afea47;
   padding: 10px 20px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+}
+
+.wrapper{
+    width:1416px;
+    height:825px;
+    /* background-color: #afea47; */
+    font-family: 'NeoDGM';
 }
 
 .header-content {
-  display: flex;
-  align-items: right;
+  margin-left : auto;
 }
 
 .logo {
@@ -59,13 +65,28 @@ header {
 }
 
 .main-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 80vh;
+  height: 100vh;
+  background-image: url('/img/baseballfield.png'); /* 이미지 파일의 경로를 지정하세요 */
+  background-size: cover; /* 이미지를 요소에 맞게 확대/축소하여 채우도록 설정 */
+  background-position: center 45%; /* 이미지를 가운데 정렬 */
 }
 
+.main-content::after {
+  top: 0;
+  left: 0;
+  position: absolute;
+  content: "";
+  z-index: 0;
+  opacity: 0.5;
+  background-image: url('/img/baseballfield.png'); /* 이미지 파일의 경로를 지정하세요 */
+  background-size: cover; /* 이미지를 요소에 맞게 확대/축소하여 채우도록 설정 */
+  background-position: center 45%; /* 이미지를 가운데 정렬 */  
+}
 .buttons {
   margin-top: 20px;
 }
@@ -109,23 +130,12 @@ header {
   font-family: 'NeoDGM'; 
 }
 
-/* Responsiveness */
-@media screen and (max-width: 768px) {
-  .header-content {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .user-info {
-    margin-top: 10px;
-  }
-}
 </style>
 </head>
 <body>
+<div class=wrapper>
   <header>
     <div class="header-content">
-      <div class="hlogo">게임 로고</div>
       <div class="user-info">
         <a href="#">로그인</a> / <a href="#">회원가입</a>
       </div>
@@ -150,7 +160,7 @@ header {
       <button class="close-modal">닫기</button> <!-- 모달창 닫기 버튼 -->
     </div>
   </div>
-
+</div>
   <script>
     const gameButton = document.querySelector('.main-button');
     const modal = document.getElementById('modal');
