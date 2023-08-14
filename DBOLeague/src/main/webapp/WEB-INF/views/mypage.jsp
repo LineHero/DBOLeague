@@ -4,7 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DBO 마이페이지</title>
+    <script src="../js/jquery-3.6.4.min.js"></script>
     <style>
+	    @font-face {
+		    font-family: 'NeoDGM';
+		    src: url('/fonts/neodgm.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+			}
       * {
         margin: 0px;
         padding: 0px;
@@ -14,11 +21,14 @@
       body {
         width: 1920px;
         margin: 0 auto;
+        display: flex;
+		    align-items: center;
+		   	justify-content: center;
+		   	font-family: 'NeoDGM'; 
       }
-      #container {
+      .wrapper {
         width: 1416px;
         height: 825px;
-        margin: 238px auto;
         background-color: efefef;
       }
       header {
@@ -38,6 +48,7 @@
       }
       #main-header {
         display: flex;
+        flex-direction: row;
         justify-content: flex-start;
         align-items: center;
         height: 150px;
@@ -67,7 +78,7 @@
       }
       /* 제목, 로그인 부분 */
       #title {
-        margin-left: 280px;
+        margin-left: 290px;
       }
       #title span {
         font-weight: 900;
@@ -78,7 +89,7 @@
       }
       /* 메인 부분 */
       #user-info {
-        width: 40%;
+        width: 60%;
       }
       #user-info ul {
         list-style: none;
@@ -90,50 +101,73 @@
         font-size: 20px;
         margin-bottom: 6px;
       }
-      #exp-info {
-        width: 60%;
-        display: flex;
-        align-items: center;
+      #top-btns {
+      	width: 40%;
       }
-      #exp-info > div {
-        margin-bottom: 9px;
+      #top-btns table {
+      	/*border-collapse: collapse;*/
       }
-      #exp-info > div > span {
-        font-size: 30px;
-        font-weight: 500;
+      #top-btns td {
+      	border: solid 2px black;
+      	width: 150px;
+      	height: 50px;
+      	background-color: d9d9d9;
       }
-      #exp-info progress {
-        width: 450px;
-        height: 70px;
-        margin-right: 40px;
-        margin-left: 10px;
+      #top-btns button {
+      	width: 100%;
+      	height: 100%;
+      	font-size: 20px;
+      	font-family: 'NeoDGM';
+      	background-color: transparent;
+      	border: none;
       }
+      #top-btns button:hover {
+      	background-color: white;
+      }
+      #latest-result,
       #play-stat {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
+      	display: flex;
+      	flex-direction: column;
       }
-      .stat-block {
-        width: 200px;
-        border: 2px solid black;
+      #latest-result > div,
+      #play-stat > div {
+      	display: flex;
+      	justify-content: center;
       }
-      .stat-block p {
-        text-align: center;
+      #latest-result > div:first-of-type,
+      #play-stat > div:first-of-type {
+      	justify-content: flex-start;
+      	margin: 20px;
+      	margin-left: 30px;
+      	font-size: 25px;
+      	font-weight: 600;
       }
+      #play-stat table,
       #latest-result table {
-        text-align: center;
-        border: 2px solid black;
+      	width: 90%;
+      	text-align: center;
         border-collapse: collapse;
       }
+      #play-stat table {
+      	font-size: 20px;
+      }
       #latest-result td,
-      #latest-result th {
+      #latest-result th,
+      #play-stat td {
         border: 2px solid black;
+        height: 45px;
+      }
+      #play-stat table > tbody > tr:nth-child(odd) {
+      	font-weight: 600;
+      	height: 50px;
+      }
+      #play-stat table > tbody > tr:nth-child(even) {
+      	height: 85px;
       }
     </style>
   </head>
   <body>
-    <div id="container">
+    <div class="wrapper">
       <header>
         <div></div>
         <div id="title">
@@ -151,76 +185,109 @@
               <li>Lv1. 닉네임</li>
               <li>소속팀 : 자바 스크립터즈</li>
               <li>이메일 : dbo@mail.com</li>
+              <li>
+              	<span>EXP : </span>
+              	<progress value="20" max="100"></progress>
+            		<span>20 / 100</span>
+              </li>
             </ul>
           </div>
-          <div id="exp-info">
-            <div>
-              <span>EXP :</span>
-            </div>
-            <progress value="20" max="100"></progress>
-            <span>20 / 100</span>
+          <div id="top-btns">
+          	<table>
+          		<tbody>
+          			<tr>
+          				<td>
+          					<button>닉네임 변경</button>
+          				</td>
+          				<td>
+          					<button>비밀번호 변경</button>
+          				</td>
+          			<tr>
+          			<tr>
+          				<td>
+          					<button>뭔가 추가할 거</button>
+          				</td>
+          				<td>
+          					<button>회원탈퇴</button>
+          				</td>
+          			<tr>
+          		</tbody>
+          	</table>
           </div>
         </div>
         <div id="main-body">
           <section>
-            <div id="play-stat">
-              <div class="stat-block">
-                <p>플레이한 게임 수</p>
-                <p>10회</p>
+          	<div id="play-stat">
+          		<div>
+              	<p>플레이 통계</p>
               </div>
-              <div class="stat-block">
-                <p>이긴 횟수</p>
-                <p>5회</p>
-              </div>
-              <div class="stat-block">
-                <p>승률</p>
-                <p>50%</p>
-              </div>
-              <div class="stat-block">
-                <p>총 획득한 경험치</p>
-                <p>13000exp</p>
-              </div>
-            </div>
+              <div>
+		            <table>
+		            	<tbody>
+		            		<tr>
+		            			<td>플레이한 게임 수</td>
+		            			<td>이긴 횟수</td>
+		            		</tr>
+		            		<tr>
+		            			<td>10회</td>
+		            			<td>5회</td>
+		            		</tr>
+		            		<tr>
+		            			<td>승률</td>
+		            			<td>총 획득한 경험치</td>
+		            		</tr>
+		            		<tr>
+		            			<td>50%</td>
+		            			<td>13000exp</td>
+		            		</tr>
+		            	</tbody>
+		            </table>
+	            </div>
+           	</div>
           </section>
           <section>
             <div id="latest-result">
-              <p>최근 전적</p>
-              <table>
-                <thead>
-                  <tr>
-                    <th>결과</th>
-                    <th>도전 회차</th>
-                    <th>도전 날짜</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>승</td>
-                    <td>3회</td>
-                    <td>23.08.11</td>
-                  </tr>
-                  <tr>
-                    <td>승</td>
-                    <td>3회</td>
-                    <td>23.08.11</td>
-                  </tr>
-                  <tr>
-                    <td>승</td>
-                    <td>3회</td>
-                    <td>23.08.11</td>
-                  </tr>
-                  <tr>
-                    <td>승</td>
-                    <td>3회</td>
-                    <td>23.08.11</td>
-                  </tr>
-                  <tr>
-                    <td>승</td>
-                    <td>3회</td>
-                    <td>23.08.11</td>
-                  </tr>
-                </tbody>
-              </table>
+            	<div>
+              	<p>최근 전적</p>
+              </div>
+              <div>
+	              <table>
+	                <thead>
+	                  <tr>
+	                    <th>결과</th>
+	                    <th>도전 회차</th>
+	                    <th>도전 날짜</th>
+	                  </tr>
+	                </thead>
+	                <tbody>
+	                  <tr>
+	                    <td>성공</td>
+	                    <td>3회</td>
+	                    <td>23.08.11</td>
+	                  </tr>
+	                  <tr>
+	                    <td>성공</td>
+	                    <td>3회</td>
+	                    <td>23.08.11</td>
+	                  </tr>
+	                  <tr>
+	                    <td>성공</td>
+	                    <td>3회</td>
+	                    <td>23.08.11</td>
+	                  </tr>
+	                  <tr>
+	                    <td>성공</td>
+	                    <td>3회</td>
+	                    <td>23.08.11</td>
+	                  </tr>
+	                  <tr>
+	                    <td>성공</td>
+	                    <td>3회</td>
+	                    <td>23.08.11</td>
+	                  </tr>
+	                </tbody>
+	              </table>
+              </div>
             </div>
           </section>
         </div>
