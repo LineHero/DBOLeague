@@ -10,8 +10,9 @@ import service.UserService;
 
 @Controller
 public class UserController {
-	@Autowired
-	UserService service;
+	/*
+	 * @Autowired UserService service;
+	 */
 	
 	//회원가입
 	@GetMapping("/signup")
