@@ -8,7 +8,7 @@ import dao.RankingDAO;
 
 
 @Service
-public class GameServiceImpl implements RankingService {
+public class GameServiceImpl implements GameService {
 	
 	@Autowired
 	GameDAO dao;
