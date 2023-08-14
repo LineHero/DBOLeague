@@ -3,9 +3,14 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.RankingDAO">
 
-<select id="template" resultType="int">
-	select * from member;
-</select>
+	<select id="getWeekelyRanking" parameterType="hashmap" resultType="rankingDto">
+		select e.member_id, m.member_nick, sum(e.exp_amount) as exp_total from exp as e
+		join member as m on e.member_id = m.member_id
+		where e.exp_date <![CDATA[>=]]> #{firstDayOfWeek} AND 
+		e.exp_date <![CDATA[<]]> DATE_ADD(#{lastDayOfWeek}, INTERVAL 1 DAY)
+		group by e.member_id
+		limit 10;
+	</select>
 
 </mapper>
 

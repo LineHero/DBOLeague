@@ -7,5 +7,6 @@
 	<typeAlias type="dto.SingleDTO" alias="singleDto"/>
 	<typeAlias type="dto.InningsDTO" alias="inningsDto"/>
 	<typeAlias type="dto.ExpDTO" alias="expDto"/>
+	<typeAlias type="dto.RankingDTO" alias="rankingDto"/>
 </typeAliases>
 </configuration>

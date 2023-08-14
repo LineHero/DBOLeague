@@ -7,7 +7,7 @@ import dao.UserDAO;
 
 
 @Service
-public class UserServiceImpl implements RankingService {
+public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	UserDAO dao;

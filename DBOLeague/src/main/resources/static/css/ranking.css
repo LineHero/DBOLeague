@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'NeoDGM';
+	src: url('/fonts/neodgm.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	width: 1920px;
+	height: 1080px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-family: 'NeoDGM'; 
+}
+
+.wrapper {
+	width: 1416px;
+	height: 825px;
+	background: #efefef;
+}
