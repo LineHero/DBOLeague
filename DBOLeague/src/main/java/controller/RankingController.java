@@ -23,6 +23,7 @@ public class RankingController {
 	@Qualifier("rankingServiceImpl")
 	RankingService service;
 
+	//날짜 매개변수로 연도, 주차, 주차의 시작일과 마지막일 hashmap으로 반환
 	public HashMap<String, String> ISOWeekInfoWithRange(LocalDate localDate) {
 
 	        LocalDate currentDate = localDate; // 예시 날짜
