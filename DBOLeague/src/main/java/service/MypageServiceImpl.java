@@ -4,6 +4,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -41,22 +42,33 @@ public class MypageServiceImpl implements MypageService{
 	
 	// 회원 최근 전적(싱글 게임)
 	@Override
-	public HashMap<String, Object> getMemberLatestResult(String member_id) {
-		HashMap<String, Object> map = new HashMap<>();
+	public List<Map<String, Object>> getMemberLatestResult(String member_id) {
+		// 회원의 최근 5게임 single_id, exp_date를 exp 테이블에서 가져옴
 		List<ExpDTO> expDtos = dao.selectMemberLatestExp(member_id);
-		ArrayList<String> single_ids = new ArrayList<>();
-		ArrayList<Timestamp> exp_dates = new ArrayList<>();
+		
+		// 가져온 결과를 각각 single_ids, exp_dates 리스트에 저장
+		List<String> single_ids = new ArrayList<>();
+		List<Timestamp> exp_dates = new ArrayList<>();
 		for (ExpDTO dto : expDtos) {
 			single_ids.add(dto.getSingle_id());
 			exp_dates.add(dto.getExp_date());
-			
 		}
+		
+		// 회원의 최근 5게임 single_all, single_result를 single 테이블에서 가져옴
+		HashMap<String, Object> map = new HashMap<>();
 		map.put("single_ids", single_ids);
 		List<SingleDTO> singleDtos = dao.selectMemberLatestSingleResult(map);
-		HashMap<String, Object> result = new HashMap<>();
-		result.put("exp_dates", exp_dates);
-		result.put("singleDtos", singleDtos);
-		return result;
+		
+		// exp_date, single_all, single_result를 List에 담아서 결과 반환
+		List<Map<String, Object>> recordList = new ArrayList<>();
+		for (int i = 0; i < singleDtos.size(); i++) {
+			Map<String, Object> temp = new HashMap<>();
+			// exp_date는 날짜만 보여줄 거면 여기에서 자르면 됨
+			temp.put("exp_date", exp_dates.get(i));
+			temp.put("single_result", singleDtos.get(i).isSingle_result());
+			temp.put("single_all", singleDtos.get(i).getSingle_all());
+		}
+		return recordList;
 	}
 	
 	

@@ -33,7 +33,7 @@
  	select single_result, single_all from single
  	where member_id = #{member_id} and
  	single_id in 
- 	(<foreach collection="" separator="," item="single_id">
+ 	(<foreach collection="single_ids" separator="," item="single_id">
 	 	#{single_id}
  	</foreach>)
 </select>
