@@ -48,7 +48,7 @@ public class RankingController {
 			@RequestParam(value = "year", required = false) Integer year,
 			@RequestParam(value = "month", required = false) Integer month,
 			@RequestParam(value = "day", required = false) Integer day) {
-		
+		//null값일 경우 현재시각 기준으로 정보 표시
 		if (year == null) {
 			year = LocalDate.now().getYear();
 		}
