@@ -1,5 +1,7 @@
 package service;
 
-public interface UserService {
+import dto.MemberDTO;
 
+public interface UserService {
+	void signUp(MemberDTO member);
 }

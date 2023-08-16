@@ -6,13 +6,19 @@
     font-style: normal;
 }
 
+*{
+	margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
 body {
 	width: 1920px;
-	height: 1080px;
+	margin: 0 auto;
 	font-family: 'NeoDGM';
 	display:flex;
-	justify-content:center;
 	align-items:center;
+	justify-content:center;
 }
 
 .wrapper {

@@ -3,8 +3,10 @@ package dao;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import dto.MemberDTO;
+
 @Repository
 @Mapper
 public interface UserDAO {
-
+	void signUp(MemberDTO member);
 }

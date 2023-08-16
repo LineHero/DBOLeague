@@ -3,6 +3,12 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.UserDAO">
 
+<insert id="signUp" parameterType="memberDto">
+    insert into member (member_id, member_pw, member_nick, member_email, member_team, member_allexp, member_total, member_win)
+    values (#{member_id}, #{member_pw}, #{member_nick}, #{member_email}, #{member_team}, 0, 0, 0)
+</insert>
+
+
 </mapper>
 
 

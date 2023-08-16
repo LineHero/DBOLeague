@@ -8,8 +8,12 @@
 <link rel="stylesheet" href="css/signUp.css">
 </head>
 <script src="js/jquery-3.6.4.min.js"></script>
+<script>
+$(document).ready(function() {
+	
+});
+</script>
 <body>
-<div class="containers">
 		<div class="wrapper">
 			<div class="logo">
 				<a href="/main">DBO League</a>
