@@ -1,35 +1,108 @@
-@charset "UTF-8";
-@font-face {
-	font-family: 'NeoDGM';
-	src: url('/fonts/neodgm.woff') format('woff');
-	font-weight: normal;
-	font-style: normal;
+/* 마이페이지 가로로 긴 경우 공통 css */
+@media all and (min-width:768px) {
+	main {
+		height: 82%;
+  }
+  #main-header {
+  	flex-direction: row;
+  	height: 25%;
+  }
+  #main-body {
+  	flex-direction: row;
+  	height: 55%;
+  }
+  #title {
+	  margin-left: 20%;
+	}
+	#top-btns {
+	  width: 100%;
+	  height: 100%;
+	}
+	#top-btns table {
+		width: 88%;
+		height: 80%;
+	}
+  section {
+  	width: 50%;
+  }
+  section > div {
+  	width: 94%;
+  }
+  #user-info,
+  #top-btns {
+	  width: 50%;
+	}
+  #top-btns td {
+		border: solid 2px black;
+	}
+	#latest-result td,
+	#play-stat td {
+	  border: 2px solid black;
+	}
 }
-* {
-  margin: 0px;
-  padding: 0px;
-  box-sizing: border-box;
+
+/* 작은 데스크탑 화면 (해상도 1280px ~ 2079px */
+@media all and (min-width:1280px) and (max-width: 2079px) { 
+	#title {
+	  margin-left: 23%;
+	}
 }
+/* 해상도 1279px 이하인 경우 border 두께 1px로 */
+@media all and (max-width:1279px) {
+	#top-btns td {
+		border: solid 1px black;
+	}
+	#latest-result td,
+	#play-stat td {
+	  border: 1px solid black;
+	}
+}
+/* 테블릿 세로 (해상도 768px ~ 1279px)*/ 
+@media all and (min-width:768px) and (max-width:1279px) { 
+  header > div:first-of-type {
+  	margin-right: 37px;
+  }
+} 
+
+/* 모바일 가로, 테블릿 세로 (해상도 ~ 767px)*/ 
+@media all and (max-width:767px) {
+  main {
+		height: 93%;
+  }
+  #main-header {
+  	flex-direction: column;
+  	height: 30%;
+  }
+  #main-body {
+  	flex-direction: column;
+  	height: 52%;
+  }
+  section,
+  section > div {
+  	width: 100%;
+  }
+  #user-info {
+	  width: 100%;
+	  height: 50%;
+  	padding-top: 10px;
+  }
+  #top-btns {
+	  width: 100%;
+	  height: 50%;
+	}
+	#top-btns table {
+		width: 84%;
+		height: 80%;
+	}
+}
+
 /* 페이지 레이아웃 설정 */
-body {
-  width: 1920px;
-  margin: 0 auto;
-  display: flex;
-	align-items: center;
-	justify-content: center;
-	font-family: 'NeoDGM'; 
-}
-.wrapper {
-  width: 1416px;
-  height: 825px;
-  background-color: efefef;
-}
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 130px;
+  height: 18%;
 }
 main {
   display: flex;
@@ -41,11 +114,9 @@ main > div {
 }
 #main-header {
   display: flex;
-  flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  height: 150px;
-  margin-bottom: 64px;
+  margin-bottom: 4%;
   background-color: white;
 }
 #main-body {
@@ -54,8 +125,7 @@ main > div {
 section {
   display: flex;
   align-items: center;
-  width: 50%;
-  height: 370px;
+  height: 100%;
 }
 section:first-of-type {
   justify-content: flex-start;
@@ -65,50 +135,43 @@ section:last-of-type {
 }
 section > div {
   background-color: white;
-  width: 94%;
   height: 100%;
 }
 /* 제목, 로그인 부분 */
-#title {
-  margin-left: 290px;
+#id-logout {
+  margin-right: 12%;
+}
+#logout-btn {
+	cursor: pointer;	
 }
 #title span {
   font-weight: 900;
-  font-size: 40px;
-}
-#id-logout {
-  margin-right: 155px;
+  cursor: pointer;
 }
 /* 메인 부분 */
-#user-info {
-  width: 60%;
-}
 #user-info ul {
   list-style: none;
-  padding: 0px;
-  margin: 0px;
-  margin-left: 60px;
+  padding: 0%;
+  margin: 0%;
+  margin-left: 10%;
 }
 #user-info li {
-  font-size: 20px;
-  margin-bottom: 6px;
+  margin-bottom: 1%;
 }
 #top-btns {
-	width: 40%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
-#top-btns table {
-	/*border-collapse: collapse;*/
+#top-btns td button {
+	cursor: pointer;
 }
 #top-btns td {
-	border: solid 2px black;
-	width: 150px;
-	height: 50px;
 	background-color: d9d9d9;
 }
 #top-btns button {
 	width: 100%;
 	height: 100%;
-	font-size: 20px;
 	font-family: 'NeoDGM';
 	background-color: transparent;
 	border: none;
@@ -124,35 +187,52 @@ section > div {
 #latest-result > div,
 #play-stat > div {
 	display: flex;
+	width: 100%;
+	height: 80%;
 	justify-content: center;
+	align-items: center;
+	padding-bottom: 4%;
 }
 #latest-result > div:first-of-type,
 #play-stat > div:first-of-type {
 	justify-content: flex-start;
-	margin: 20px;
-	margin-left: 30px;
-	font-size: 25px;
+	height: 20%;
+	padding-left: 6%;
+	padding-bottom: 0%;
 	font-weight: 600;
 }
 #play-stat table,
 #latest-result table {
 	width: 90%;
+	height: 100%;
 	text-align: center;
   border-collapse: collapse;
 }
-#play-stat table {
-	font-size: 20px;
+#latest-result tr:first-of-type {
+	font-weight: 600;
 }
 #latest-result td,
-#latest-result th,
 #play-stat td {
-  border: 2px solid black;
-  height: 45px;
+  height: 16.6%;
 }
 #play-stat table > tbody > tr:nth-child(odd) {
 	font-weight: 600;
-	height: 50px;
+	height: 19%;
 }
 #play-stat table > tbody > tr:nth-child(even) {
-	height: 85px;
+	height: 31%;
+}
+#record-detail {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 200px;
+	height: 300px;
+}
+#record-detail table {
+	border-collapse: collapse;
+}
+#record-detail th, 
+#record-detail td {
+	border: 1px solid black; 
 }

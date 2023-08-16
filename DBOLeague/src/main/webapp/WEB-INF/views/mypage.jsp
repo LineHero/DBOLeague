@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DBO 마이페이지</title>
     <script src="/js/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
   </head>
   <body>
@@ -12,16 +13,16 @@
       <header>
         <div></div>
         <div id="title">
-          <span>DBO LEAGUE</span>
+          <span class="font-XL">DBO LEAGUE</span>
         </div>
         <div id="id-logout">
-          <span>아이디</span> | <!-- ${memberDto.member_id} -->
-          <span id="logout-btn">로그아웃</span>
+          <span class="font-S">아이디</span> <!-- ${memberDto.member_id} -->
+          <span id="logout-btn" class="font-S">로그아웃</span>
         </div>
       </header>
       <main>
         <div id="main-header">
-          <div id="user-info">
+          <div id="user-info" class="font-M">
             <ul>
               <li>Lv1. 닉네임</li> <!-- ${memberDto.member_nick} -->
               <li>소속팀 : 자바 스크립터즈</li> <!-- ${memberDto.member_team} -->
@@ -38,20 +39,20 @@
           		<tbody>
           			<tr>
           				<td>
-          					<button id="change-nick-btn">닉네임 변경</button>
+          					<button id="change-nick-btn" class="font-M">닉네임 변경</button>
           				</td>
           				<td>
-          					<button id="change-pw-btn">비밀번호 변경</button>
+          					<button id="change-pw-btn" class="font-M">비밀번호 변경</button>
           				</td>
-          			<tr>
+          			</tr>
           			<tr>
           				<td>
-          					<button id="anything-btn">뭔가 추가할 거</button>
+          					<button id="anything-btn" class="font-M">뭔가 추가할 거</button>
           				</td>
           				<td>
-          					<button id="delete-member-btn">회원탈퇴</button>
+          					<button id="delete-member-btn" class="font-M">회원탈퇴</button>
           				</td>
-          			<tr>
+          			</tr>
           		</tbody>
           	</table>
           </div>
@@ -60,10 +61,10 @@
           <section>
           	<div id="play-stat">
           		<div>
-              	<p>플레이 통계</p>
+              	<p class="font-L">플레이 통계</p>
               </div>
               <div>
-		            <table>
+		            <table class="font-M">
 		            	<tbody>
 		            		<tr>
 		            			<td>플레이한 게임 수</td>
@@ -74,12 +75,12 @@
 		            			<td>5회</td> <!-- ${memberDto.member_win} -->
 		            		</tr>
 		            		<tr>
-		            			<td>승률</td>
 		            			<td>총 획득한 경험치</td>
+		            			<td>승률</td>
 		            		</tr>
 		            		<tr> <!-- 승률 계산 : 게임횟수 0일 때, 소수점 1자리까지 표현 -->
-		            			<td>50%</td> <!-- ${memberDto.member_win / memberDto.member_total * 100} -->
 		            			<td>13000exp</td> <!-- ${memberDto.member_allexp} -->
+		            			<td>50%</td> <!-- ${memberDto.member_win / memberDto.member_total * 100} -->
 		            		</tr>
 		            	</tbody>
 		            </table>
@@ -89,18 +90,16 @@
           <section>
             <div id="latest-result">
             	<div>
-              	<p>최근 전적</p>
+              	<p class="font-L">최근 전적</p>
               </div>
               <div>
-	              <table>
-	                <thead>
-	                  <tr>
-	                    <th>결과</th>
-	                    <th>도전 회차</th>
-	                    <th>도전 날짜</th>
-	                  </tr>
-	                </thead>
+	              <table class="font-S">
 	                <tbody>
+	                  <tr class="font-M">
+	                    <td>결과</td>
+	                    <td>도전 회차</td>
+	                    <td>도전 날짜</td>
+	                  </tr>
 	                	<%--
 	                	<c:forEach var="record" items="${recordList}">
 	                		<tr>
@@ -142,6 +141,35 @@
           </section>
         </div>
       </main>
+    </div>
+    <div id="record-detail" style="display: none">
+    	<p>전적 상세내용</p>
+    	<p>정답 : 5314</p> <!-- ${single.single_answer} -->
+    	<table>
+    		<thead>
+	    		<tr>
+	    			<th>회차</th>
+	    			<th>도전한 수</th>
+	    			<th>결과</th>
+	    		</tr>
+    		</thead>
+    		<tbody>
+    			<%--
+    			<c:forEach items="${recordList[0]}" var="inning">
+    				<tr>
+		    			<td>${inning.innings_count}</td>
+		    			<td>${inning.innings_chall}</td>
+		    			<td><span style="color: FFD400">${inning.innings_strike}S</span> <span style="color: green">${inning.innings_ball}B</span></td>
+	    			</tr>
+    			</c:forEach> 
+    			--%>
+    			<tr>
+	    			<td>1</td>
+	    			<td>5314</td>
+	    			<td><span style="color: FFD400">4S</span> <span style="color: green">0B</span></td>
+    			</tr>
+    		</tbody>
+    	</table>
     </div>
   </body>
   <script src="/js/mypage.js"></script>

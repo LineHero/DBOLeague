@@ -27,6 +27,16 @@ $("#delete-member-btn").click(function() {
 }); //click
 
 // 최근 전적 행에 마우스 올릴 때
-$("#latest-result tbody tr").mouseover(function() {
-	console.log("최근 전적");
+let prevRecord = null;
+$("#latest-result tr").mouseover(function(e) {
+	if (prevRecord === e.currentTarget) return;
+	$("#record-detail").css("display", "inline");
+	prevRecord = e.currentTarget;
 }); //mouseover
+// 최근 전적 행에서 마우스 내릴 때
+$("#latest-result tr").mouseout(function() {
+	$("#record-detail").css("display", "none");
+	prevRecord = null;
+}); //mouseover
+$("#latest-result tr").first().off("mouseover");
+$("#latest-result tr").first().off("mouseout");
