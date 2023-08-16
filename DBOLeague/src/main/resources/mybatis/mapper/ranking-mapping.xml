@@ -9,6 +9,7 @@
 		where e.exp_date <![CDATA[>=]]> #{firstDayOfWeek} AND 
 		e.exp_date <![CDATA[<]]> DATE_ADD(#{lastDayOfWeek}, INTERVAL 1 DAY)
 		group by e.member_id
+		order by exp_total desc
 		limit 10;
 	</select>
 
