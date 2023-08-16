@@ -9,21 +9,12 @@
 <script src="../js/jquery-3.6.4.min.js"></script>
 <link href="../css/ranking.css" rel="stylesheet" type="text/css" />
 <link href="../css/cursor.css" rel="stylesheet" type="text/css" />
-<!-- <script type="text/javascript">
-
-$(window).on('load', ()=>{
-	setTimeout("closeLoadingWithMask()", 1000);
-});
- 
-function closeLoadingWithMask() {
-    $('#mask, #loadingImg').hide();
-    $('#mask, #loadingImg').empty();  
-}
-</script> -->
+<script src="../js/loading.js"></script>
+<link href="../css/loading.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="wrapper">
-	<!-- <div id="mask"></div> -->
+	<%@ include file="/WEB-INF/views/loading.jsp" %>
 		<header>
 			<div></div>
 			<div id="home">
