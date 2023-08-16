@@ -1,14 +1,16 @@
 package dto;
 
 public class SingleDTO {
-	String single_id, member_id;
+	int single_id;
+	String member_id;
 	int single_all;
 	boolean single_result;
 	
-	public String getSingle_id() {
+
+	public int getSingle_id() {
 		return single_id;
 	}
-	public void setSingle_id(String single_id) {
+	public void setSingle_id(int single_id) {
 		this.single_id = single_id;
 	}
 	public String getMember_id() {
