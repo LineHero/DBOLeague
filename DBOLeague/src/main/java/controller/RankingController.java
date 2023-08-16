@@ -23,6 +23,7 @@ public class RankingController {
 	@Qualifier("rankingServiceImpl")
 	RankingService service;
 
+	//날짜 매개변수로 연도, 주차, 주차의 시작일과 마지막일 hashmap으로 반환
 	public HashMap<String, String> ISOWeekInfoWithRange(LocalDate localDate) {
 
 	        LocalDate currentDate = localDate; // 예시 날짜
@@ -47,7 +48,7 @@ public class RankingController {
 			@RequestParam(value = "year", required = false) Integer year,
 			@RequestParam(value = "month", required = false) Integer month,
 			@RequestParam(value = "day", required = false) Integer day) {
-		
+		//null값일 경우 현재시각 기준으로 정보 표시
 		if (year == null) {
 			year = LocalDate.now().getYear();
 		}
