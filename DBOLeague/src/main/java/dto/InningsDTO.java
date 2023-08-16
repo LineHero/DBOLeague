@@ -1,13 +1,13 @@
 package dto;
 
 public class InningsDTO {
-	String single_id;
-	int innings_count, innings_strike, innings_ball;
+	int single_id, innings_count, innings_strike, innings_ball;
 	
-	public String getSingle_id() {
+
+	public int getSingle_id() {
 		return single_id;
 	}
-	public void setSingle_id(String single_id) {
+	public void setSingle_id(int single_id) {
 		this.single_id = single_id;
 	}
 	public int getInnings_count() {

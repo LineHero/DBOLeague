@@ -2,9 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="dao.GameDAO">
+<insert id="insertSingle" parameterType="singleDto">
+	insert into single
+	(
+		member_id,
+		single_all,
+		single_result
+	)
+	values 
+	(
+		#{member_id}, 
+		#{single_all}, 
+		#{single_result} 
+	)
+	<selectKey resultType="int" keyProperty="single_id" order="AFTER">
+        SELECT LAST_INSERT_ID()
+    </selectKey>
+</insert>
 
+<update id="updateSingle" parameterType="singleDto">
+	update single set single_all = #{single_all}, single_result = #{single_result}
+	where single_id = #{single_id}
+</update>
 
-
+<insert id="insertInnings" parameterType="inningsDto">
+	insert into innings
+	(
+		single_id,
+		innings_count,
+		innings_strike,
+		innings_ball
+	)
+	values 
+	(
+		#{single_id}, 
+		#{innings_count}, 
+		#{innings_strike},
+		#{innings_ball}
+	)
+</insert>
 </mapper>
 
 
