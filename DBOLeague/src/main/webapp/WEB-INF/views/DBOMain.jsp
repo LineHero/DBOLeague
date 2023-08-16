@@ -41,6 +41,7 @@ header {
 }
 
 .logo {
+  color: white;
   font-size: 0;
   font-weight: bold;
   overflow: hidden; 
@@ -53,7 +54,7 @@ header {
     opacity: 0; 
   }
   100% {
-    font-size: 50px; 
+    font-size: 80px; 
     opacity: 1;
   }
 }
@@ -65,53 +66,80 @@ header {
 }
 
 .main-content {
+  width:1416px;
+  height:789px;
+  background-color: transparent;
+}
+
+.main-background {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-image: url('/img/baseballfield.png'); /* 이미지 파일의 경로를 지정하세요 */
-  background-size: cover; /* 이미지를 요소에 맞게 확대/축소하여 채우도록 설정 */
-  background-position: center 45%; /* 이미지를 가운데 정렬 */
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
 
-.main-content::after {
+.main-background::before {
+  content: "";
+  position: absolute;
   top: 0;
   left: 0;
-  position: absolute;
-  content: "";
-  z-index: 0;
-  opacity: 0.5;
-  background-image: url('/img/baseballfield.png'); /* 이미지 파일의 경로를 지정하세요 */
-  background-size: cover; /* 이미지를 요소에 맞게 확대/축소하여 채우도록 설정 */
-  background-position: center 45%; /* 이미지를 가운데 정렬 */  
+  width: 100%;
+  height: 100%;
+  background-image: url('/img/baseballfield.png'); 
+  background-size: cover;
+  background-position: center 45%;
+  filter: brightness(0.9); 
+  z-index: -1;
 }
+
 .buttons {
   margin-top: 20px;
 }
 
-.main-button {
-  background-color: #333;
-  color: #fff;
-  border: none;
-  padding: 10px 20px;
-  margin: 5px;
-  cursor: pointer;
-  font-family: 'NeoDGM'; 
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  top: 50%; 
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 300px; 
-  height: 200px; 
-  background-color: white;
-  z-index: 9999; 
-}
+  .main-button {
+    position: relative;
+    background: none;
+    border: none;
+    margin: 30px 30px;
+  }
+  
+  .main-button img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+.textinbtn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'NeoDGM';
+    font-size: 30px;
+    color: white;
+  }
+  
+  .modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+    z-index: 9999;
+  }
 
 .modal-content {
   background-color: #fff;
@@ -142,16 +170,27 @@ header {
     </div>
   </header>
   
-  <main>
-    <div class="main-content">
-      <div class="logo">DBO League</div>
-      <div class="buttons">
-        <button class="main-button">게임하기</button>
-        <button class="main-button">게임설명</button>
-        <button class="main-button">랭킹</button>
-      </div>
-    </div>
-  </main>
+ 	<main>
+	    <div class="main-content">
+	    <div class="main-background">
+	      <div class="logo">DBO League</div>
+	      <div class="buttons">
+	        <button class="main-button">
+	        	<img src="/img/pixelbtnred.png">
+	        	<div class="textinbtn">게임하기</div>
+	        </button>
+	        <button class="main-button">
+	        	<img src="/img/pixelbtnyellow.png">
+				<div class="textinbtn">게임설명</div>
+			</button>
+	        <button class="main-button">
+	        	<img src="/img/pixelbtengreen.png">
+	        	<div class="textinbtn">랭킹</div>
+	        </button>
+	      </div>
+	    </div>
+	    </div>
+	</main>
   
  <div id="modal" class="modal">
     <div class="modal-content">
