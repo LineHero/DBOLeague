@@ -3,7 +3,8 @@ package dto;
 import java.sql.Timestamp;
 
 public class ExpDTO {
-	String member_id, single_id;
+	String member_id;
+	int single_id;
 	Timestamp exp_date;
 	int exp_amount;
 	
@@ -13,10 +14,10 @@ public class ExpDTO {
 	public void setMember_id(String member_id) {
 		this.member_id = member_id;
 	}
-	public String getSingle_id() {
+	public int getSingle_id() {
 		return single_id;
 	}
-	public void setSingle_id(String single_id) {
+	public void setSingle_id(int single_id) {
 		this.single_id = single_id;
 	}
 	public Timestamp getExp_date() {
