@@ -11,20 +11,23 @@
 <link href="../css/cursor.css" rel="stylesheet" type="text/css" />
 <script src="../js/loading.js"></script>
 <link href="../css/loading.css" rel="stylesheet" type="text/css" />
+<link href="../css/stars.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 	<div class="wrapper">
 	<%@ include file="/WEB-INF/views/loading.jsp" %>
+		<div id="stars"></div>
+        <div id="stars2"></div>
 		<header>
-			<div></div>
 			<div id="home">
-				<span class="cursorPointer headermenu">HOME</span>
+				<span class="cursorPointer headermenu">메인 화면으로</span>
 			</div>
 			<div id="title">
 				<span>DBO LEAGUE - Personal Ranking</span>
 			</div>
 			<div id="id-logout">
-				<span class="cursorPointer headermenu">아이디</span> | <span
+				<span class="cursorPointer headermenu">마이페이지</span> | <span
 					class="cursorPointer headermenu">로그아웃</span>
 			</div>
 		</header>
@@ -51,9 +54,7 @@
 						onclick="goSpecificWeek(${year}, ${week + 1})" />
 				</div>
 			</div>
-
 			<div id="main-body">
-
 				<section>
 					<div class="rankings">
 						<c:choose>
@@ -93,11 +94,9 @@
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-
 					</div>
 				</section>
 			</div>
-
 		</main>
 	</div>
 </body>
