@@ -21,14 +21,14 @@
         <div id="stars2"></div>
 		<header>
 			<div id="home">
-				<span class="cursorPointer headermenu">메인 화면으로</span>
+				<span class="cursorPointer headermenu" onclick="goPage('main')">메인 화면으로</span>
 			</div>
 			<div id="title">
 				<span>DBO LEAGUE - Personal Ranking</span>
 			</div>
 			<div id="id-logout">
-				<span class="cursorPointer headermenu">마이페이지</span> | <span
-					class="cursorPointer headermenu">로그아웃</span>
+				<span class="cursorPointer headermenu" onclick="goPage('mypage')">마이페이지</span> | <span
+					class="cursorPointer headermenu" onclick="goPage('logout')">로그아웃</span>
 			</div>
 		</header>
 		<main>
