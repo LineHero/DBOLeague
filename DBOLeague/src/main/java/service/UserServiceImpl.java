@@ -15,6 +15,10 @@ public class UserServiceImpl implements UserService {
 	public void signUp(MemberDTO member) {
 		dao.signUp(member);
 	}
+	
+	public MemberDTO signIn(MemberDTO dto) {
+		return dao.signIn(dto);
+	}
 
 	
 }
