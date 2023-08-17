@@ -41,6 +41,20 @@
 		#{innings_ball}
 	)
 </insert>
+<insert id="insertExp" parameterType="expDto">
+	insert into exp
+	(
+		member_id,
+		exp_amount,
+		single_id
+	)
+	values 
+	(
+		#{member_id}, 
+		#{exp_amount}, 
+		#{single_id}
+	)
+</insert>
 </mapper>
 
 

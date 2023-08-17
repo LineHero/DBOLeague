@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import dto.ExpDTO;
 import dto.InningsDTO;
 import dto.SingleDTO;
 import service.GameServiceImpl;
@@ -32,16 +33,24 @@ public class GameController {
 		int single_id = service.insertSingle(dto);
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("single_id",single_id);
+		mv.addObject("member_id","aaa");
 		mv.setViewName("game");
 		return mv;
 	}
 	
 	@RequestMapping("/ajaxResult")
 	@ResponseBody
-	public String ajaxResult(int single_all, int single_result, int single_id) {
+	public String ajaxResult(int single_all, int single_result, int single_id, String member_id) {
 		boolean result = true;
 		if(single_result == 0) {
 			result = false;
+		}
+		if(single_result == 1) {
+			ExpDTO expdto = new ExpDTO();
+			expdto.setMember_id(member_id);
+			expdto.setSingle_id(single_id);
+			expdto.setExp_amount(500+((9-single_all)*10));
+			service.insertExp(expdto);
 		}
 		SingleDTO dto = new SingleDTO();
 		dto.setSingle_all(single_all);
