@@ -9,31 +9,25 @@
 <script src="../js/jquery-3.6.4.min.js"></script>
 <link href="../css/ranking.css" rel="stylesheet" type="text/css" />
 <link href="../css/cursor.css" rel="stylesheet" type="text/css" />
-<!-- <script type="text/javascript">
+<script src="../js/loading.js"></script>
+<link href="../css/loading.css" rel="stylesheet" type="text/css" />
+<link href="../css/stars.css" rel="stylesheet" type="text/css" />
 
-$(window).on('load', ()=>{
-	setTimeout("closeLoadingWithMask()", 1000);
-});
- 
-function closeLoadingWithMask() {
-    $('#mask, #loadingImg').hide();
-    $('#mask, #loadingImg').empty();  
-}
-</script> -->
 </head>
 <body>
 	<div class="wrapper">
-	<!-- <div id="mask"></div> -->
+	<%@ include file="/WEB-INF/views/loading.jsp" %>
+		<div id="stars"></div>
+        <div id="stars2"></div>
 		<header>
-			<div></div>
 			<div id="home">
-				<span class="cursorPointer headermenu">HOME</span>
+				<span class="cursorPointer headermenu">메인 화면으로</span>
 			</div>
 			<div id="title">
 				<span>DBO LEAGUE - Personal Ranking</span>
 			</div>
 			<div id="id-logout">
-				<span class="cursorPointer headermenu">아이디</span> | <span
+				<span class="cursorPointer headermenu">마이페이지</span> | <span
 					class="cursorPointer headermenu">로그아웃</span>
 			</div>
 		</header>
@@ -60,9 +54,7 @@ function closeLoadingWithMask() {
 						onclick="goSpecificWeek(${year}, ${week + 1})" />
 				</div>
 			</div>
-
 			<div id="main-body">
-
 				<section>
 					<div class="rankings">
 						<c:choose>
@@ -102,11 +94,9 @@ function closeLoadingWithMask() {
 								</c:forEach>
 							</c:otherwise>
 						</c:choose>
-
 					</div>
 				</section>
 			</div>
-
 		</main>
 	</div>
 </body>
