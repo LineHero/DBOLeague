@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import dao.GameDAO;
 import dao.RankingDAO;
+import dto.ExpDTO;
 import dto.InningsDTO;
 import dto.SingleDTO;
 
@@ -32,6 +33,12 @@ public class GameServiceImpl implements GameService {
 	public int insertInnings(InningsDTO dto) {
 		// TODO Auto-generated method stub
 		return dao.insertInnings(dto);
+	}
+
+	@Override
+	public int insertExp(ExpDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.insertExp(dto);
 	}
 
 	

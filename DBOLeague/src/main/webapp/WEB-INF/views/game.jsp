@@ -260,12 +260,13 @@ function bullsAndCows () {
 		 if ( strikes == 4 ){ 
 			 check_Correct.innerHTML = final;
 			 single_result = 1;
+			 
 			 } 
 		 else { check_Correct.innerHTML = final+ " 정답은 " + question + " 입니다."; } 
 		 
 			$.ajax({
 				url:'ajaxResult',
-				data:{'single_all':result_count,'single_result':single_result, 'single_id':${single_id}},
+				data:{'single_all':result_count,'single_result':single_result, 'single_id':${single_id}, 'member_id':'${member_id}'},
 				type:'get',
 				dataType:'json',
 				success:function(response){
