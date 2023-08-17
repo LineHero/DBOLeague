@@ -14,7 +14,7 @@ public interface MypageService {
 	int deleteMember(String member_id);
 	
 	// 회원 최근 전적
-	List<Map<String, Object>> getLatestRecords(String member_id);
+	Map<String, Object> getLatestRecords(String member_id);
 	
 	
 }

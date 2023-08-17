@@ -19,8 +19,8 @@ $("#change-nick-btn").click(function() {
 $("#change-pw-btn").click(function() {
 	console.log("비밀번호 변경");
 }); //click
-$("#anything-btn").click(function() {
-	console.log("뭔가 추가할 거");
+$("#decorate-store").click(function() {
+	console.log("꾸미기 아이템");
 }); //click
 $("#delete-member-btn").click(function() {
 	console.log("회원탈퇴");

@@ -1,4 +1,4 @@
-/* 마이페이지 가로로 긴 경우 공통 css */
+/*
 @media all and (min-width:768px) {
 	main {
 		height: 82%;
@@ -41,13 +41,11 @@
 	}
 }
 
-/* 작은 데스크탑 화면 (해상도 1280px ~ 2079px */
 @media all and (min-width:1280px) and (max-width: 2079px) { 
 	#title {
 	  margin-left: 23%;
 	}
 }
-/* 해상도 1279px 이하인 경우 border 두께 1px로 */
 @media all and (max-width:1279px) {
 	#top-btns td {
 		border: solid 1px black;
@@ -57,14 +55,12 @@
 	  border: 1px solid black;
 	}
 }
-/* 테블릿 세로 (해상도 768px ~ 1279px)*/ 
 @media all and (min-width:768px) and (max-width:1279px) { 
   header > div:first-of-type {
   	margin-right: 37px;
   }
 } 
 
-/* 모바일 가로, 테블릿 세로 (해상도 ~ 767px)*/ 
 @media all and (max-width:767px) {
   main {
 		height: 93%;
@@ -95,14 +91,54 @@
 		height: 80%;
 	}
 }
+*/
+
+@media all {
+	main {
+		height: 82%;
+  }
+  #main-header {
+  	flex-direction: row;
+  	height: 25%;
+  }
+  #main-body {
+  	flex-direction: row;
+  	height: 55%;
+  }
+	#top-btns {
+	  width: 100%;
+	  height: 100%;
+	}
+	#top-btns table {
+		width: 66%;
+		height: 66%;
+	}
+  section {
+  	width: 50%;
+  }
+  section > div {
+  	width: 94%;
+  }
+  #user-info,
+  #top-btns {
+	  width: 50%;
+	}
+}
 
 /* 페이지 레이아웃 설정 */
 header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   width: 100%;
-  height: 18%;
+  height: 130px;
+}
+#header-wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+	width: 78%;
+	height: 100%;
 }
 main {
   display: flex;
@@ -138,15 +174,15 @@ section > div {
   height: 100%;
 }
 /* 제목, 로그인 부분 */
-#id-logout {
-  margin-right: 12%;
+#home {
+	margin-right: 112px;
 }
-#logout-btn {
-	cursor: pointer;	
+#home span:hover,
+#id-logout span:hover {
+	text-decoration: underline;
 }
 #title span {
   font-weight: 900;
-  cursor: pointer;
 }
 /* 메인 부분 */
 #user-info ul {
@@ -163,21 +199,10 @@ section > div {
 	justify-content: center;
 	align-items: center;
 }
-#top-btns td button {
-	cursor: pointer;
-}
-#top-btns td {
-	background-color: d9d9d9;
-}
 #top-btns button {
 	width: 100%;
 	height: 100%;
 	font-family: 'NeoDGM';
-	background-color: transparent;
-	border: none;
-}
-#top-btns button:hover {
-	background-color: white;
 }
 #latest-result,
 #play-stat {
@@ -188,14 +213,13 @@ section > div {
 #play-stat > div {
 	display: flex;
 	width: 100%;
-	height: 80%;
 	justify-content: center;
-	align-items: center;
 	padding-bottom: 4%;
 }
 #latest-result > div:first-of-type,
 #play-stat > div:first-of-type {
 	justify-content: flex-start;
+	align-items: center;
 	height: 20%;
 	padding-left: 6%;
 	padding-bottom: 0%;
@@ -203,36 +227,51 @@ section > div {
 }
 #play-stat table,
 #latest-result table {
+	color: #AAffff;
 	width: 90%;
-	height: 100%;
 	text-align: center;
-  border-collapse: collapse;
 }
 #latest-result tr:first-of-type {
 	font-weight: 600;
 }
 #latest-result td,
 #play-stat td {
-  height: 16.6%;
+	background-color: black;
+  height: 45px;
+  border: 1px solid white;
+}
+#latest-result tr:first-of-type {
+	color: white;
 }
 #play-stat table > tbody > tr:nth-child(odd) {
 	font-weight: 600;
-	height: 19%;
+	height: 55px;
+	color: white;
 }
 #play-stat table > tbody > tr:nth-child(even) {
-	height: 31%;
+	height: 80px;
 }
 #record-detail {
 	position: absolute;
-	top: 10px;
-	right: 10px;
+	top: 680px;
+	right: 320px;
 	width: 200px;
-	height: 300px;
+	height: 269px;
+	background-color: black;
+	color: white;
 }
 #record-detail table {
-	border-collapse: collapse;
+	display: flex;
+	justify-content: center;
+	width: 100%;
+	color: white;
+	border-collapse: separate;
+	border-spacing: 2px;
 }
-#record-detail th, 
+#record-detail tbody {
+	width: 90%;
+}
 #record-detail td {
-	border: 1px solid black; 
+	border: 1px solid white;
+	text-align: center;
 }
