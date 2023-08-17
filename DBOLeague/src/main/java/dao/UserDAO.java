@@ -9,4 +9,5 @@ import dto.MemberDTO;
 @Mapper
 public interface UserDAO {
 	void signUp(MemberDTO member);
+	public MemberDTO signIn(MemberDTO dto);
 }
