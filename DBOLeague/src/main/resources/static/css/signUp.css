@@ -12,8 +12,11 @@
     box-sizing: border-box;
 }
 
+html {height: 100%}
+
 body {
 	width: 1920px;
+	height: 100%;
 	margin: 0 auto;
 	font-family: 'NeoDGM';
 	display:flex;
