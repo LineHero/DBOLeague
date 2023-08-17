@@ -17,3 +17,7 @@ $(".arrows").mouseover(function() {
 $(".arrows").mouseout(function() {
   $(this).attr("src", $(this).data("static"))
 });
+
+function goPage(page) {
+	location.href = "/" + page;
+}

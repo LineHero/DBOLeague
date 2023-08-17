@@ -179,4 +179,5 @@ section {
 
 .headermenu:hover {
 	text-decoration: underline;
+	color: yellow;
 }
