@@ -133,7 +133,7 @@
     </div>
     <div id="record-detail" style="display: none">
     	<p style="margin: 0px; padding: 3px 3px 3px 10px;">전적 상세내용</p>
-    	<p style="margin: 0px; padding: 3px 3px 3px 10px;">정답 : 5314</p>
+    	<p style="margin: 0px; padding: 3px 3px 3px 10px;"></p>
     	<table>
     		<tbody>
 	    		<tr>

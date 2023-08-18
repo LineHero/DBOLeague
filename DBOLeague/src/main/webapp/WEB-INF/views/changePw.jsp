@@ -115,11 +115,11 @@
 		<div>
 			<ul>
 				<li>
-					<span>현재 비밀번호 : </span>
+					<span>현재 비밀번호 &nbsp;&nbsp; : </span>
 					<input id="curPw" type="password" />
 				</li>
 				<li>
-					<span>새 비밀번호 : </span>
+					<span>새 비밀번호 &nbsp;&nbsp;&nbsp;&nbsp; : </span>
 					<input id="newPw1" type="password" />
 				</li>
 				<li>

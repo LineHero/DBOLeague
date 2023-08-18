@@ -70,6 +70,8 @@ $("#latest-result tr").mouseover(function(e) {
 			dataType: "json",
 			method: "post",
 			success: function(response) {
+				// 게임 정답을 html에 보여줌
+				$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[recordIdx].single_answer}`);
 				for (let i = 0; i < response.singleDetails.length; i++) {
 					// 상세 전적을 마우스 위치에 띄움
 					$("#record-detail").css({
@@ -77,15 +79,12 @@ $("#latest-result tr").mouseover(function(e) {
 						"left": e.screenX,
 					}); //css
 					
-					// 게임 정답을 html에 보여줌
-					//$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[i].single_answer}`);
-					
 					// 게임 회차별 결과를 html에 보여줌
 					$("#record-detail tbody").append('<tr></tr>');
 					if ($("#record-detail tbody tr").eq(i + 1).children().length === 0) {
 						$("#record-detail tbody tr").eq(i + 1).append(`
 							<td>${response.singleDetails[i].innings_count}</td>
-							<td>5314</td>
+							<td>${response.singleDetails[i].innings_chall}</td>
 							<td>
 								<span style="color: yellow">${response.singleDetails[i].innings_strike}S <span>
 								<span style="color: green">${response.singleDetails[i].innings_ball}B <span>

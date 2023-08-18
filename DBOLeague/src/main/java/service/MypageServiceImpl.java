@@ -81,12 +81,14 @@ public class MypageServiceImpl implements MypageService{
 			if(singleDtos.get(i).isSingle_result()) temp.put("single_result", "성공");
 			else temp.put("single_result", "실패");
 			temp.put("single_all", String.valueOf(singleDtos.get(i).getSingle_all()));
-//			temp.put("single_answer", String.valueOf(singleDtos.get(i).getSingle_answer()));
+			temp.put("single_answer", String.valueOf(singleDtos.get(i).getSingle_answer()));
 			temp.put("exp_date", String.valueOf(exp_dates.get(i)));
 			singleRecords.add(temp);
 		}
 		serviceResult.put("singleRecords", singleRecords);
 		serviceResult.put("singleDetails", inningsDtos);
+		
+		System.out.println(singleRecords);
 		
 		return serviceResult;
 	}
