@@ -191,7 +191,6 @@
 		}
 	}); //click
 	$("#cancel").click(function() {
-		alert("비밀번호 변경이 취소되었습니다.");
 		self.close();
 	}); //click
 	

@@ -10,12 +10,15 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/cursor.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
+    <link rel="stylesheet" href="/css/stars.css" />
     <script src="../js/loading.js"></script>
 		<link href="../css/loading.css" rel="stylesheet" type="text/css" />
   </head>
   <body>
     <div class="wrapper">
     	<%@ include file="/WEB-INF/views/loading.jsp" %>
+    	<div id="stars"></div>
+      <div id="stars2"></div>
       <header>
         <div id="home">
         	<span class="font-S cursorPointer">메인 화면으로</span>

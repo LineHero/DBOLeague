@@ -104,7 +104,17 @@ public class MypageController {
 			deleteResult = -1;
 		} else {
 			String member_id = ((MemberDTO) session.getAttribute("userlogin")).getMember_id();
-			deleteResult = service.deleteMember(member_id);
+			Map<String, String> map = new HashMap<>();
+			String deleted_id = null;
+			String deleted_pw = null;
+			
+			// 탈퇴하는 회원 아이디, 비번을 임의의 문자열로 만들기
+			
+			
+			map.put("member_id", member_id);
+			map.put("deleted_id", deleted_id);
+			map.put("deleted_pw", deleted_pw);
+			deleteResult = service.deleteMember(map);
 		}
 		session.removeAttribute("userlogin");
 		response.put("deleteResult", deleteResult);
@@ -122,8 +132,9 @@ public class MypageController {
 		}
 		mv.setViewName("mypage");
 		
-		MemberDTO dto = (MemberDTO) session.getAttribute("userlogin");
-		Map<String, Object> serviceResult = service.getLatestRecords(dto.getMember_id(), -1);
+		String member_id = ((MemberDTO) session.getAttribute("userlogin")).getMember_id();
+		MemberDTO dto = service.selectMemberInfo(member_id);
+		Map<String, Object> serviceResult = service.getLatestRecords(member_id, -1);
 		
 		// 회원 경험치에 따라 레벨과 경험치 퍼센트 구해서 뷰에 보냄
 		int[] lv_cut = {0, 3000, 10000, 22000, 40000, 65000, 98000, 140000, 192000, 255000};
@@ -161,8 +172,8 @@ public class MypageController {
 			ajaxResult.put("", "redirect:/maintest");
 			return ajaxResult;
 		}
-		MemberDTO dto = (MemberDTO) session.getAttribute("userlogin");
-		Map<String, Object> serviceResult = service.getLatestRecords(dto.getMember_id(), detailIdx);
+		String member_id = ((MemberDTO) session.getAttribute("userlogin")).getMember_id();
+		Map<String, Object> serviceResult = service.getLatestRecords(member_id, detailIdx);
 		ajaxResult.put("singleRecords", serviceResult.get("singleRecords"));
 		ajaxResult.put("singleDetails", serviceResult.get("singleDetails"));
 		return ajaxResult;

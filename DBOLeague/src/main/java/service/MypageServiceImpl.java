@@ -23,6 +23,12 @@ public class MypageServiceImpl implements MypageService{
 	@Qualifier("mypageDAO")
 	MypageDAO dao;
 	
+	// 회원의 현재 정보 가져오기
+	@Override
+	public MemberDTO selectMemberInfo(String member_id) {
+		return dao.selectMemberInfo(member_id);
+	}
+
 	// 닉네임 변경
 	@Override
 	public int updateMemberNick(MemberDTO dto) {
@@ -43,8 +49,8 @@ public class MypageServiceImpl implements MypageService{
 	
 	// 회원탈퇴
 	@Override
-	public int deleteMember(String member_id) {
-		return dao.deleteMember(member_id);
+	public int deleteMember(Map<String, String> map) {
+		return dao.deleteMember(map);
 	}
 
 	// 회원 최근 전적(싱글 게임)
@@ -87,8 +93,6 @@ public class MypageServiceImpl implements MypageService{
 		}
 		serviceResult.put("singleRecords", singleRecords);
 		serviceResult.put("singleDetails", inningsDtos);
-		
-		System.out.println(singleRecords);
 		
 		return serviceResult;
 	}

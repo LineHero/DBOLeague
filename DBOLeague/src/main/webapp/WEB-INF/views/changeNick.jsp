@@ -159,7 +159,6 @@
 		}); //ajax
 	}); //click
 	$("#cancel").click(function() {
-		alert("닉네임 변경이 취소되었습니다.");
 		self.close();
 	}); //click
 </script>
