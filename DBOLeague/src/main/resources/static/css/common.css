@@ -43,6 +43,49 @@ body {
   }
 }
 
+.btns {
+  background: #c1ec42;
+  border: 0px;
+  position: relative;
+  box-shadow: 
+    inset -2px 2px 1px 1px #d5ee99,
+    inset -2px -2px 1px 1px #537726,
+    inset 2px 0px 1px 1px #7abc69
+    
+}
+
+.btns:active {
+  top: 2px;
+}
+
+.btns::after {
+  content: '';
+  background: #000;
+  position: absolute;
+  left: -2%;
+  top: 0;
+  width: 104%;
+  height: 100%;
+  z-index: -1
+}
+
+.btns::before {
+  content: '';
+  background: #000;
+  position: absolute;
+  left: 0;
+  top: -5%;
+  width: 100%;
+  height: 110%;
+  z-index: -2
+}
+
+.btns:focus {
+	border: none;
+	outline: none;
+}
+
+
 @media all and (min-width:2080px) { 
   body {
   	width: 1920px;
@@ -130,4 +173,3 @@ body {
   	font-size: 4.7px;
   }
 }
-

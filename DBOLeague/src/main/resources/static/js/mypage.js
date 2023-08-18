@@ -28,7 +28,7 @@ $("#change-pw-btn").click(function() {
 
 // 꾸미기 아이템 버튼 클릭
 $("#decorate-store").click(function() {
-	console.log("꾸미기 아이템");
+	 location.href = "/myItemShop";
 }); //click
 
 // 회원 탈퇴 버튼 클릭
