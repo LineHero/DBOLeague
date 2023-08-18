@@ -2,7 +2,7 @@ package dto;
 
 
 public class RankingDTO {
-	String member_id, member_nick;
+	String member_id, member_nick, nicknameitem_name;
 	int exp_total;
 	
 	public String getMember_id() {
@@ -23,10 +23,18 @@ public class RankingDTO {
 	public void setExp_total(int exp_total) {
 		this.exp_total = exp_total;
 	}
+	public String getNicknameitem_name() {
+		return nicknameitem_name;
+	}
+	public void setNicknameitem_name(String nicknameitem_name) {
+		this.nicknameitem_name = nicknameitem_name;
+	}
 	@Override
 	public String toString() {
-		return "RankingDTO [member_id=" + member_id + ", member_nick=" + member_nick + ", exp_total=" + exp_total + "]";
+		return "RankingDTO [member_id=" + member_id + ", member_nick=" + member_nick + ", nicknameitem_name="
+				+ nicknameitem_name + ", exp_total=" + exp_total + "]";
 	}
+	
 	
 	
 	

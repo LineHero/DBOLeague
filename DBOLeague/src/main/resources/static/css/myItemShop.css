@@ -29,7 +29,7 @@ body {
 .wrapper {
 	width: 1416px;
 	height: 825px;
-	background: efefef;
+	background: radial-gradient(ellipse at bottom, #1b2735 0%,#090a0f 100%);
 }
 
 header {
@@ -101,10 +101,10 @@ section {
 	justify-content: flex-start;
 	width: 100%;
 	height: 100%;
-	color: black;
+	color: white;
 	border: 6px groove yellow;
 	border-radius: 11px;
-	background-color: brown;
+	background-color: black;
 }
 
 .itemblocks {
@@ -112,6 +112,15 @@ section {
 	height: 10%;
 	align-items: center;
 	border-bottom: 1px solid black;
+}
+
+.soldout {
+	background: grey;
+	justify-content: center;
+}
+
+.itemblocks:hover {
+	background: grey;
 }
 
 .itemblocks > div {
@@ -123,8 +132,8 @@ section {
 	display: flex;
 	height: 10%;
 	align-items: center;
-	border-bottom: 5px solid black;
-	background: white;
+	border-bottom: 5px groove yellow;
+	
 }
 
 .shoptitle > div {
@@ -140,7 +149,7 @@ section {
 .expamount {
 	flex: 3 1 0;
 	text-align: center;
-	border-left: 1px solid black;
+	border-left: 1px solid white;
 }
 
 
@@ -148,13 +157,13 @@ section {
 	flex: 1 1 0;
 	min-width: 135px;
 	text-align: center;
-	border-right: 1px solid black;
+	border-right: 1px solid white;
 }
 
 .itemname {
 	flex: 3 1 0;
 	text-align: center;
-	border-right: 1px solid black;
+	border-right: 1px solid white;
 }
 
 .itemexplain {
@@ -167,17 +176,17 @@ section {
 	flex: 1 1 0;
 	min-width: 135px;
 	text-align: center;
-	border-left: 1px solid black;
+	border-left: 1px solid white;
 }
 /* 제목, 로그인 부분 */
 #title {
 	flex: 4 1 0;
 	text-align: center;
-	color: black;
+	color: white;
 }
 
 #title span {
-	color: black;
+	color: white;
 	font-weight: 900;
 	font-size: 40px;
 }
@@ -185,12 +194,12 @@ section {
 #id-logout {
 	flex: 1 1 0;
 	text-align: center;
-	color: black;
+	color: white;
 }
 
 #home {
 	flex: 1 1 0;
-	color: black;
+	color: white;
 	text-align: center;
 	font-size: 16px;
 }
