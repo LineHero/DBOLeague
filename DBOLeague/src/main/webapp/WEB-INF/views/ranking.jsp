@@ -96,9 +96,18 @@
 												</div>
 											</c:otherwise>
 										</c:choose>
-										<div class="place rainbow"><span> ${status.count} </span></div>
-										<div class="nickname glowing"><span>${dto.member_nick}</span></div>
-										<div class="expamount jumping"><span>${dto.exp_total} exp.</span></div>
+										<c:choose>
+											<c:when test="${not empty dto.nicknameitem_name}">
+												<div class="place"><span> ${status.count} </span></div>
+												<div class="nickname  ${dto.nicknameitem_name}"><span>${dto.member_nick}</span></div>
+												<div class="expamount"><span>${dto.exp_total} exp.</span></div>
+											</c:when>
+											<c:otherwise>
+												<div class="place"><span> ${status.count} </span></div>
+												<div class="nickname"><span>${dto.member_nick}</span></div>
+												<div class="expamount"><span>${dto.exp_total} exp.</span></div>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</c:forEach>
 							</c:otherwise>

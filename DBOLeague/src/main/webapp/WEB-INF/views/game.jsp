@@ -250,15 +250,17 @@ function bullsAndCows () {
 
 	 td1.innerHTML = guess; 
 	 td2.innerHTML = roundScore; 
-		$.ajax({
-			url:'score',
-			data:{'strikes':result.bulls,'balls':balls, 'single_id':${single_id},'innings_count':result_count,'innings_chall':innings_chall},
-			type:'get',
-			dataType:'json',
-			success:function(response){
-			},
-			error:function(){}
-		});//ajax
+	 <c:if test="${member_id != null}">
+			$.ajax({
+				url:'score',
+				data:{'strikes':result.bulls,'balls':balls, 'single_id':${single_id},'innings_count':result_count,'innings_chall':innings_chall},
+				type:'get',
+				dataType:'json',
+				success:function(response){
+				},
+				error:function(){}
+			});//ajax		 
+	</c:if>
 
 	 var text = ""; 
 	 var final = result.final; 
@@ -271,16 +273,19 @@ function bullsAndCows () {
 			 single_result = 1;
 			 
 			 } 
-		 else { check_Correct.innerHTML = final+ " 정답은 " + question + " 입니다."; } 
-			$.ajax({
-				url:'ajaxResult',
-				data:{'single_all':result_count,'single_result':single_result, 'single_id':${single_id}, 'member_id':'${member_id}','single_answer':single_answer},
-				type:'get',
-				dataType:'json',
-				success:function(response){
-				},
-				error:function(){}
-			});//ajax
+		 else { check_Correct.innerHTML = final+ " 정답은 " + result.question + " 입니다."; } 
+		 <c:if test="${member_id != null}">
+				$.ajax({
+					url:'ajaxResult',
+					data:{'single_all':result_count,'single_result':single_result, 'single_id':${single_id}, 'member_id':'${member_id}','single_answer':single_answer},
+					type:'get',
+					dataType:'json',
+					success:function(response){
+					},
+					error:function(){}
+				});//ajax	 
+		 </c:if>
+
 	 } 
 
 	 formArea.reset(); 

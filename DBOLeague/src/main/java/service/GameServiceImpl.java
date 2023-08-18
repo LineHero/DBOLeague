@@ -7,6 +7,7 @@ import dao.GameDAO;
 import dao.RankingDAO;
 import dto.ExpDTO;
 import dto.InningsDTO;
+import dto.MemberDTO;
 import dto.SingleDTO;
 
 
@@ -28,6 +29,13 @@ public class GameServiceImpl implements GameService {
 		// TODO Auto-generated method stub
 		return dao.updateSingle(dto);
 	}
+	
+
+	@Override
+	public int updateMember(MemberDTO dto) {
+		// TODO Auto-generated method stub
+		return dao.updateMember(dto);
+	}
 
 	@Override
 	public int insertInnings(InningsDTO dto) {
@@ -39,6 +47,12 @@ public class GameServiceImpl implements GameService {
 	public int insertExp(ExpDTO dto) {
 		// TODO Auto-generated method stub
 		return dao.insertExp(dto);
+	}
+
+	@Override
+	public MemberDTO selectMember(String member_id) {
+		// TODO Auto-generated method stub
+		return dao.selectMember(member_id);
 	}
 
 	

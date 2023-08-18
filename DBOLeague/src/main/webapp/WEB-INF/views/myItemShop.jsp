@@ -8,15 +8,20 @@
 <title>DBO 개인 랭킹</title>
 <script src="../js/jquery-3.6.4.min.js"></script>
 <link href="../css/myItemShop.css" rel="stylesheet" type="text/css" />
+<link href="../css/myItemShopmodal.css" rel="stylesheet" type="text/css" />
 <link href="../css/cursor.css" rel="stylesheet" type="text/css" />
 <script src="../js/loading.js"></script>
 <link href="../css/loading.css" rel="stylesheet" type="text/css" />
 <link href="../css/itemseffect.css" rel="stylesheet" type="text/css" />
+<link href="../css/stars.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
 	<div class="wrapper">
 		<%@ include file="/WEB-INF/views/loading.jsp"%>
+		<%@ include file="/WEB-INF/views/myItemShopmodal.jsp"%>
+		<div id="stars"></div>
+        <div id="stars2"></div>
 		<header>
 			<div id="home">
 				<span class="cursorPointer headermenu" onclick="goPage('maintest')">메인
@@ -51,32 +56,68 @@
 					<div class="items">
 						<div class="shoptitle">
 							<div class="inboxtitle">닉네임 변경 아이템</div>
-							<div class="expamount">99999999 exp. 보유중</div>
+							<div class="expamount" data-exp="${exp}" id="expamount">${exp} exp. 보유중</div>
 						</div>
-						<div class="itemblocks">
-							<div class="item jumping"><span>Jumping</span></div>
-							<div class="itemname">콩콩뛰는 닉네임</div>
-							<div class="itemexplain">닉네임을 점프하게 만들어보세요!<br>이 아이템을 적용하면 랭킹 페이지에도 보여집니다!</div>
-							<div class="itemprice">1000 exp.</div>
-						</div>
-						<div class="itemblocks">
-							<div class="item glowing"><span>Glowing</span></div>
-							<div class="itemname">빛나는 닉네임</div>
-							<div class="itemexplain">닉네임이 깜박거려요!<br>이 아이템을 적용하면 랭킹 페이지에도 보여집니다!</div>
-							<div class="itemprice">1000000 exp.</div>
-						</div>
-						<div class="itemblocks">
-							<div class="item rainbow"><span>RainBow</span></div>
-							<div class="itemname">그래디언트 무지개색 닉네임</div>
-							<div class="itemexplain">닉네임을 그래디언트 무지개로 만들어보세요!<br>이 아이템을 적용하면 랭킹 페이지에도 보여집니다!</div>
-							<div class="itemprice">1000000 exp.</div>
-						</div>
-						<div class="itemblocks">
-							<div class="item neon"><span>Neon</span></div>
-							<div class="itemname">네온 무지개색 닉네임</div>
-							<div class="itemexplain">닉네임을 네온 무지개로 만들어보세요!<br>이 아이템을 적용하면 랭킹 페이지에도 보여집니다!</div>
-							<div class="itemprice">1000000 exp.</div>
-						</div>
+						<c:choose>
+							<c:when test="${empty jumping}">
+								<div class="itemblocks cursorPointer openmodal" data-item="jumping" data-price="2000">
+									<div class="item cursorPointer jumping openmodal" data-item="jumping" data-price="2000"><span>jumping</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="jumping" data-price="2000">콩콩뛰는 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="jumping" data-price="2000">닉네임을 점프하게 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="jumping" data-price="2000">2000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty glowing}">
+								<div class="itemblocks cursorPointer openmodal" data-item="glowing" data-price="5000">
+									<div class="item cursorPointer glowing openmodal" data-item="glowing" data-price="5000"><span>glowing</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="glowing" data-price="5000">빛나는 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="glowing" data-price="5000">닉네임이 깜박거려요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="glowing" data-price="5000">5000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty rainbow}">
+								<div class="itemblocks cursorPointer openmodal" data-item="rainbow" data-price="10000">
+									<div class="item cursorPointer rainbow openmodal" data-item="rainbow" data-price="10000"><span>rainbow</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="rainbow" data-price="10000">그래디언트 무지개색 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="rainbow" data-price="10000">닉네임을 그래디언트 무지개로 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="rainbow" data-price="10000">10000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty neon}">
+								<div class="itemblocks cursorPointer openmodal" data-item="neon" data-price="10000">
+									<div class="item cursorPointer neon openmodal" data-item="neon" data-price="10000"><span>neon</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="neon" data-price="10000">네온 무지개색 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="neon" data-price="10000">닉네임을 네온 무지개로 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="neon" data-price="10000">10000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
 					</div>
 					<div>
 						<img src="../img/Sprite-0002.png" alt=""
@@ -89,5 +130,6 @@
 		</main>
 	</div>
 </body>
-<script src="../js/ranking.js"></script>
+<script src="../js/myItemShop.js"></script>
+<script src="../js/myItemShopmodal.js"></script>
 </html>
