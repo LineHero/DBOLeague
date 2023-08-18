@@ -133,13 +133,13 @@ section > div {
 	font-family: 'NeoDGM';
 }
 .btns {
-  background: #c1ec42;
+  background: #c0c4bd;
   border: 0px;
   position: relative;
   box-shadow: 
-    inset -2px 2px 1px 1px #d5ee99,
-    inset -2px -2px 1px 1px #537726,
-    inset 2px 0px 1px 1px #7abc69
+    inset -2px 2px 1px 1px #d1d3cf,
+    inset -2px -2px 1px 1px #808080,
+    inset 2px 0px 1px 1px #a4a499
 }
 
 .btns:active {

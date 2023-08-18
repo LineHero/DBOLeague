@@ -44,8 +44,13 @@ public class MypageController {
 			updateResult = -1;
 		} else {
 			MemberDTO dto = (MemberDTO) session.getAttribute("userlogin");
-			dto.setMember_nick(newNick);
-			updateResult = service.updateMemberNick(dto);
+			if (dto.getMember_nick().equals(newNick)) { // 현재 닉네임과 같다면 
+				updateResult = -2;
+			}
+			else {
+				dto.setMember_nick(newNick);
+				updateResult = service.updateMemberNick(dto);
+			}
 		}
 		response.put("updateResult", updateResult);
 		return response;
@@ -158,6 +163,7 @@ public class MypageController {
 		}
 		MemberDTO dto = (MemberDTO) session.getAttribute("userlogin");
 		Map<String, Object> serviceResult = service.getLatestRecords(dto.getMember_id(), detailIdx);
+		ajaxResult.put("singleRecords", serviceResult.get("singleRecords"));
 		ajaxResult.put("singleDetails", serviceResult.get("singleDetails"));
 		return ajaxResult;
 	}

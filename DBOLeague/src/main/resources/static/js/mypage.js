@@ -18,12 +18,12 @@ $("#logout-btn").click(function() {
 
 // 닉네임 변경 버튼 클릭
 $("#change-nick-btn").click(function() {
-	window.open("/changeNick", "", "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=260, height=120, top=0,left=0");
+	window.open("/changeNick", "", "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=400, height=250, top=0,left=0");
 }); //click
 
 // 비밀번호 변경 버튼 클릭
 $("#change-pw-btn").click(function() {
-	window.open("/changePw", "", "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=260, height=120, top=0,left=0");
+	window.open("/changePw", "", "toolbar=no,scrollbars=no,resizable=yes,status=no,menubar=no,width=400, height=300, top=0,left=0");
 }); //click
 
 // 꾸미기 아이템 버튼 클릭
@@ -71,10 +71,16 @@ $("#latest-result tr").mouseover(function(e) {
 			method: "post",
 			success: function(response) {
 				for (let i = 0; i < response.singleDetails.length; i++) {
+					// 상세 전적을 마우스 위치에 띄움
 					$("#record-detail").css({
 						"top": e.screenY - 35,
 						"left": e.screenX,
 					}); //css
+					
+					// 게임 정답을 html에 보여줌
+					//$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[i].single_answer}`);
+					
+					// 게임 회차별 결과를 html에 보여줌
 					$("#record-detail tbody").append('<tr></tr>');
 					if ($("#record-detail tbody tr").eq(i + 1).children().length === 0) {
 						$("#record-detail tbody tr").eq(i + 1).append(`

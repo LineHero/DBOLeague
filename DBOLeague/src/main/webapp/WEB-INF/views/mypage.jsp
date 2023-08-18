@@ -125,11 +125,6 @@
 	                	</c:if>
 	                </tbody>
 	              </table>
-	              <%--
-                <c:if test="${empty singleRecords}">
-                	<div>아직 게임을 플레이하지 않았어요..</div>
-                </c:if>
-                --%>
               </div>
             </div>
           </section>
