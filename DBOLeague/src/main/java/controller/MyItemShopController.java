@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.view.RedirectView;
 
 import dto.MemberDTO;
 import dto.RankingDTO;
@@ -20,7 +21,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import service.RankingService;
 
 @Controller
-public class RankingController {
+public class MyItemShopController {
 
 	@Autowired
 	@Qualifier("rankingServiceImpl")
@@ -46,43 +47,26 @@ public class RankingController {
 	        return map;
 	}
 
-	@RequestMapping("/ranking")
-	public ModelAndView Ranking(
+	@RequestMapping("/myItemShop")
+	public ModelAndView myItemShop(
 			@SessionAttribute(name = "userlogin", required = false)MemberDTO dto,
-			@RequestParam(value = "year", required = false) Integer year,
-			@RequestParam(value = "month", required = false) Integer month,
-			@RequestParam(value = "day", required = false) Integer day,
 			HttpServletResponse response) {
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
 		response.setDateHeader("Expires", 0); // Proxies.
 		
-		//null값일 경우 현재시각 기준으로 정보 표시
-		if (year == null) {
-			year = LocalDate.now().getYear();
-		}
-		if (month == null) {
-			month = LocalDate.now().getMonthValue();
-		}
-		if (day == null) {
-			day = LocalDate.now().getDayOfMonth();
-		}
-		
 		ModelAndView mv = new ModelAndView();
-		
 		
 		if (dto != null) {
 			mv.addObject("login", "true");
+		} else {
+			RedirectView rv = new RedirectView();
+			rv.setUrl("/login");
+			mv.setView(rv);
+			return mv;
 		}
 		
-		HashMap<String, String> map = ISOWeekInfoWithRange(LocalDate.of(year, month, day));
-		List<RankingDTO> list = service.getWeekelyRanking(map);
-		mv.addObject("year", Integer.parseInt(map.get("year")));
-		mv.addObject("week", Integer.parseInt(map.get("week")));
-		mv.addObject("firstDayOfWeek", map.get("firstDayOfWeek"));
-		mv.addObject("lastDayOfWeek", map.get("lastDayOfWeek"));
-		mv.addObject("ranklist", list);
-		mv.setViewName("ranking");
+		mv.setViewName("myItemShop");
 		return mv;
 	}
 
