@@ -273,7 +273,7 @@ function bullsAndCows () {
 			 single_result = 1;
 			 
 			 } 
-		 else { check_Correct.innerHTML = final+ " 정답은 " + question + " 입니다."; } 
+		 else { check_Correct.innerHTML = final+ " 정답은 " + result.question + " 입니다."; } 
 		 <c:if test="${member_id != null}">
 				$.ajax({
 					url:'ajaxResult',

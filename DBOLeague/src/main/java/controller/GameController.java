@@ -80,7 +80,6 @@ public class GameController {
 	@RequestMapping("/score")
 	@ResponseBody
 	public String score(HttpSession session,int  strikes, int  balls, int single_id, int innings_count, String innings_chall) {
-		System.out.println(innings_chall);
 		session.getAttribute("userlogin");
 		InningsDTO dto = new InningsDTO();
 		dto.setInnings_ball(balls);
