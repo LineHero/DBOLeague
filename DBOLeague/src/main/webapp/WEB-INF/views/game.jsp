@@ -17,10 +17,11 @@
 <link href="css/game.css" rel="stylesheet" type="text/css" />
 <script type="text/javascript">
 
-// 만든이 : http://tonks.tistory.com/115 
 
 var question = []; 
 var count = 0; 
+var guess = []; 
+var single_answer  = 0;
 
 /*  ─────────────────────  메세지 설정  ─────────────────────  */ 
 
@@ -77,13 +78,13 @@ function playOneRound ( tagList ) {
 	 } 
 
 
-	 var guess = []; 
+	 
 	 var bulls = cows = 0; 
 	 var final; 
 
 	 for ( var x = 0; x < lengths; x++ ){ guess[ x ] = tagList[ x ].value; }
 
-
+	 single_answer  = question.join().replace( /,/g , "" );
 	 var questionText = question.join().replace( /,/g , "" ); 
 	 var guessText = guess.join().replace( /,/g , "" ); 
 
@@ -237,9 +238,11 @@ function bullsAndCows () {
 	 var result_count = count+1;
 	 if ( count == 0 ){ deleteText(); } 
 
-	 var question = result.question; 
-	 var guess = result.guess; 
-		alert(question);
+// 	 var question = result.question; 
+// 	 var guess = result.guess; 
+		var innings_chall = guess.join().replace( /,/g , "" );
+		alert(question.join());
+
 	 var tr = trList [ count ]; 
 
 	 var td1 = tr.getElementsByTagName( "td" )[ 1 ]; 
@@ -249,7 +252,7 @@ function bullsAndCows () {
 	 td2.innerHTML = roundScore; 
 		$.ajax({
 			url:'score',
-			data:{'strikes':result.bulls,'balls':balls, 'single_id':${single_id},'innings_count':result_count},
+			data:{'strikes':result.bulls,'balls':balls, 'single_id':${single_id},'innings_count':result_count,'innings_chall':innings_chall},
 			type:'get',
 			dataType:'json',
 			success:function(response){
@@ -269,10 +272,9 @@ function bullsAndCows () {
 			 
 			 } 
 		 else { check_Correct.innerHTML = final+ " 정답은 " + question + " 입니다."; } 
-		 
 			$.ajax({
 				url:'ajaxResult',
-				data:{'single_all':result_count,'single_result':single_result, 'single_id':${single_id}, 'member_id':'${member_id}'},
+				data:{'single_all':result_count,'single_result':single_result, 'single_id':${single_id}, 'member_id':'${member_id}','single_answer':single_answer},
 				type:'get',
 				dataType:'json',
 				success:function(response){

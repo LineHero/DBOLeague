@@ -5,6 +5,7 @@ public class SingleDTO {
 	String member_id;
 	int single_all;
 	boolean single_result;
+	int single_answer;
 	
 
 	public int getSingle_id() {
@@ -32,6 +33,12 @@ public class SingleDTO {
 		this.single_result = single_result;
 	}
 	
+	public int getSingle_answer() {
+		return single_answer;
+	}
+	public void setSingle_answer(int single_answer) {
+		this.single_answer = single_answer;
+	}
 	@Override
 	public String toString() {
 		return "SingleDTO [single_id=" + single_id + ", member_id=" + member_id + ", single_all=" + single_all
