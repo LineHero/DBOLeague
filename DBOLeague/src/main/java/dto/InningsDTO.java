@@ -1,7 +1,7 @@
 package dto;
 
 public class InningsDTO {
-	int single_id, innings_count, innings_strike, innings_ball;
+	int single_id, innings_count, innings_strike, innings_ball, innings_chall ;
 	
 
 	public int getSingle_id() {
@@ -29,6 +29,12 @@ public class InningsDTO {
 		this.innings_ball = innings_ball;
 	}
 	
+	public int getInnings_chall() {
+		return innings_chall;
+	}
+	public void setInnings_chall(int innings_chall) {
+		this.innings_chall = innings_chall;
+	}
 	@Override
 	public String toString() {
 		return "InningsDTO [single_id=" + single_id + ", innings_count=" + innings_count + ", innings_strike="

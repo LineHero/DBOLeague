@@ -40,7 +40,7 @@ public class GameController {
 	
 	@RequestMapping("/ajaxResult")
 	@ResponseBody
-	public String ajaxResult(int single_all, int single_result, int single_id, String member_id) {
+	public String ajaxResult(int single_all, int single_result, int single_id, String member_id, int single_answer ) {
 		boolean result = true;
 		if(single_result == 0) {
 			result = false;
@@ -56,18 +56,20 @@ public class GameController {
 		dto.setSingle_all(single_all);
 		dto.setSingle_id(single_id);
 		dto.setSingle_result(result);
+		dto.setSingle_answer(single_answer);
 		service.updateSingle(dto);
 		return "success";
 	}
 	
 	@RequestMapping("/score")
 	@ResponseBody
-	public String score(int  strikes, int  balls, int single_id, int innings_count) {
+	public String score(int  strikes, int  balls, int single_id, int innings_count, int innings_chall) {
 		InningsDTO dto = new InningsDTO();
 		dto.setInnings_ball(balls);
 		dto.setInnings_strike(strikes);
 		dto.setInnings_count(innings_count);
 		dto.setSingle_id(single_id);
+		dto.setInnings_chall(innings_chall);
 		service.insertInnings(dto);
 		return "success";
 	}
