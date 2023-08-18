@@ -81,6 +81,7 @@ public class MypageServiceImpl implements MypageService{
 			if(singleDtos.get(i).isSingle_result()) temp.put("single_result", "성공");
 			else temp.put("single_result", "실패");
 			temp.put("single_all", String.valueOf(singleDtos.get(i).getSingle_all()));
+//			temp.put("single_answer", String.valueOf(singleDtos.get(i).getSingle_answer()));
 			temp.put("exp_date", String.valueOf(exp_dates.get(i)));
 			singleRecords.add(temp);
 		}
@@ -90,7 +91,7 @@ public class MypageServiceImpl implements MypageService{
 		return serviceResult;
 	}
 	
-	// 회원의 최근 5게임 single_all, single_result를 single 테이블에서 가져옴
+	// 회원의 최근 5게임 single_all, single_result, single_answer 를 single 테이블에서 가져옴
 	public List<SingleDTO> getLatestSingleRecords(List<Integer> single_ids, String member_id) {
 		HashMap<String, Object> map = new HashMap<>();
 		map.put("single_ids", single_ids);
