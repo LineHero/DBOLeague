@@ -22,7 +22,7 @@ public interface MypageDAO {
 	// 회원 정보 수정
 	int updateMemberNick(MemberDTO dto); // 닉네임 변경
 	int updateMemberPw(MemberDTO dto); // 비밀번호 변경
-	String selectMemberCurPw(MemberDTO dto); // 회원의 현재 비밀번호
+	String selectMemberCurPw(String member_id); // 회원의 현재 비밀번호
 	int deleteMember(Map<String, String> map); // 회원탈퇴
 	
 	// 회원 최근 전적

@@ -43,8 +43,8 @@ public class MypageServiceImpl implements MypageService{
 	
 	// 회원의 현재 비밀번호
 	@Override
-	public String selectMemberCurPw(MemberDTO dto) {
-		return dao.selectMemberCurPw(dto);
+	public String selectMemberCurPw(String member_id) {
+		return dao.selectMemberCurPw(member_id);
 	}
 	
 	// 회원탈퇴
@@ -87,7 +87,7 @@ public class MypageServiceImpl implements MypageService{
 			if(singleDtos.get(i).isSingle_result()) temp.put("single_result", "성공");
 			else temp.put("single_result", "실패");
 			temp.put("single_all", String.valueOf(singleDtos.get(i).getSingle_all()));
-			temp.put("single_answer", String.valueOf(singleDtos.get(i).getSingle_answer()));
+			temp.put("single_answer", singleDtos.get(i).getSingle_answer());
 			temp.put("exp_date", String.valueOf(exp_dates.get(i)));
 			singleRecords.add(temp);
 		}

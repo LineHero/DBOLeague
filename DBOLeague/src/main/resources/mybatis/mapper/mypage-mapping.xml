@@ -22,16 +22,16 @@
 </update>
 
 <!-- 회원의 현재 비밀번호 가져오기 -->
-<select id="selectMemberCurPw" parameterType="memberDto">
+<select id="selectMemberCurPw" parameterType="String">
 	select member_pw from member
 	where member_id = #{member_id}
 </select>
 
 <!-- 회원탈퇴 처리 -->
-<update id="deleteMember" parameterType="hashmap">
+<update id="deleteMember" parameterType="map">
 	update member set
-	member_id = #{deleted_id},
-	member_pw = #{deleted_pw}
+	member_id = #{hash_member_id},
+	member_pw = #{hash_member_pw},
 	member_nick = "탈퇴회원",
 	member_email = "탈퇴회원",
 	member_team = null
@@ -63,17 +63,6 @@
 	where single_id = #{single_id}
 	order by single_id desc;
 </select>
-
-<!-- 게임 결과에 따라 member 테이블 업데이트 -->
-<!-- 
-<update id="updateMemberGameResult" parameterType="hashmap">
-	update member set 
-	member_allexp = member_allexp + #{gain_exp},
-	member_total = member_total + 1,
-	member_win = member_win + #{single_result}
-	where member_id = #{member_id}
-</update>
- -->
 
 </mapper>
 

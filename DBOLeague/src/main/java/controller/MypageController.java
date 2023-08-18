@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dto.MemberDTO;
 import jakarta.servlet.http.HttpSession;
+import service.HashService;
 import service.MypageService;
 
 @Controller
@@ -22,6 +24,12 @@ public class MypageController {
 	@Autowired
 	@Qualifier("mypageServiceImpl")
 	MypageService service;
+	
+	@Autowired
+	private HashService hashService;
+	
+	@Value("${hash.bcrypt.number}")
+	private int hashNum;
 	
 	// 닉네임 변경 폼 열기
 	@GetMapping("/changeNick")
@@ -77,7 +85,8 @@ public class MypageController {
 			updateResult = -1;
 		} else {
 			MemberDTO dto = (MemberDTO) session.getAttribute("userlogin"); // 로그인 회원 DTO
-			String member_curPw = service.selectMemberCurPw(dto); // 회원의 현재 비밀번호
+			String member_id = dto.getMember_id();
+			String member_curPw = service.selectMemberCurPw(member_id); // 회원의 현재 비밀번호
 			
 			if (!curPw.equals(member_curPw)) { // 현재 비밀번호를 틀렸다면
 				updateResult = -2;
@@ -104,16 +113,17 @@ public class MypageController {
 			deleteResult = -1;
 		} else {
 			String member_id = ((MemberDTO) session.getAttribute("userlogin")).getMember_id();
+			String member_pw = service.selectMemberCurPw(member_id);
 			Map<String, String> map = new HashMap<>();
-			String deleted_id = null;
-			String deleted_pw = null;
 			
-			// 탈퇴하는 회원 아이디, 비번을 임의의 문자열로 만들기
-			
+			// 탈퇴하는 회원 아이디, 비번에 해시함수 적용
+			String hash_member_id = hashService.encodeBcrypt(member_id, hashNum);
+			String hash_member_pw = hashService.encodeBcrypt(member_pw, hashNum);
 			
 			map.put("member_id", member_id);
-			map.put("deleted_id", deleted_id);
-			map.put("deleted_pw", deleted_pw);
+			map.put("hash_member_id", hash_member_id);
+			map.put("hash_member_pw", hash_member_pw);
+			map.put("member_team", null);
 			deleteResult = service.deleteMember(map);
 		}
 		session.removeAttribute("userlogin");

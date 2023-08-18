@@ -11,7 +11,7 @@ public interface MypageService {
 	// 회원 정보 수정
 	int updateMemberNick(MemberDTO dto); 
 	int updateMemberPw(MemberDTO dto);
-	String selectMemberCurPw(MemberDTO dto);
+	String selectMemberCurPw(String member_id);
 	int deleteMember(Map<String, String> map);
 	
 	// 회원 최근 전적
