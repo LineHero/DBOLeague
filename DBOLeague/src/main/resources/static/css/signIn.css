@@ -15,7 +15,7 @@
 html {height: 100%}
 
 body {
-	width: 1920px;
+	width: 120rem;
 	height: 100%;
 	margin: 0 auto;
 	font-family: 'NeoDGM';
@@ -25,12 +25,13 @@ body {
 }
 
 .wrapper {
-	width: 1416px;
-	height:825px;
-    background: #efefef;
+	width: 88.5rem;
+	height:51.563rem;
+    background: radial-gradient(ellipse at bottom, #1b2735 0%,#090a0f 100%);
 }
 
 .logo {
+	color:white;
 	font-size: 4rem;
 	text-align: center;
 	padding-top: 14rem;
@@ -42,7 +43,90 @@ body {
 	color: inherit; /*색변화x*/
 }
 
-.login {
-	display:flex;
-	justify-content:center;
+.logo > a:hover {
+	color: yellow;
+}
+
+.formindiv {
+	margin : 1.25rem auto 1.563rem auto;
+	width : 25rem;
+}
+
+.formindiv>p {
+	font-size : 1.031rem;
+	line-height : 0.75rem;
+	margin:0.5rem 0px 0.5rem 0.125rem; /*위 우 아래 좌*/
+	color: white;
+}
+
+input[type="text"],
+input[type="password"] {
+	border: 0.375rem groove lightgrey;
+	border-radius: 0.688rem;
+	height: 3.125rem;
+	padding: 0.313rem 0.625rem;
+	width: 25rem;
+	margin-bottom: 0.563rem;
+	background-color: rgba(255, 255, 255, 0);
+	color: white;
+	font-size: 1.25rem;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+	border: 0.375rem groove yellow;
+	border-color: yellow;
+	border-radius: 0.688rem;
+	outline: 0;
+}
+
+/* div input[type="checkbox"] {
+    width: 1.6rem !important;
+    height: 1.6rem !important;
+    margin : 1.25rem auto 1.563rem auto;
+}
+
+input[type="checkbox"] {
+	 position: relative;
+    top: 3.5px;
+    background: url(/img/key.svg) no-repeat center;
+    background-size: 100%;
+}
+
+.checkbox-icon.checked {
+  background-image: url(/img/lock-2.svg);
+}
+
+input[type="checkbox"] + label {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    margin-top:-0.5rem;
+    color:white;
+} */
+
+
+h5 {
+	padding-left: 0.313rem;
+	color: red;
+	font-size:0.938rem;
+}
+
+#login_submit_btn {
+	font-family: 'NeoDGM';
+	font-size: 1.125rem;
+	text-decoration: none; /*밑줄 없애기*/
+	color: yellow;
+	border:  0.375rem groove yellow;
+	border-radius: 0.688rem;
+    background-color: rgba( 0, 0, 0, 0.3);
+	padding: 0.625rem 2.5rem;
+	width:25rem;
+	height:3.125rem;
+	margin-top:0.938rem;
+	margin-bottom:2.5rem;
+}
+
+#login_submit_btn:hover {
+	border: 0.375rem groove #39FF14;
+	color:#39FF14;
 }

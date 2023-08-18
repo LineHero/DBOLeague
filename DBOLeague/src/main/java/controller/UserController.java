@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.servlet.ModelAndView;
@@ -100,6 +101,26 @@ public class UserController {
 			return "signIn";
 		}
 		
-		//id, email 중복여부
+		//id, email 중복 여부
+	    @RequestMapping(value="/ismemberexist", produces = {"application/json;charset=utf-8"})
+	    public @ResponseBody String isMemberexist(@RequestParam("inputId") String inputId, @RequestParam("inputEmail") String inputEmail) {
+	    	int idresult = service.isMemberIdExist(inputId);
+	    	int emailresult = service.isMemberEmailExist(inputEmail);
+	    	String result = "";
+	    	
+	    	if( idresult == 0 && emailresult == 0) {
+	    		result = "ok";
+	    	}
+	    	else if(idresult == 1 && emailresult == 0) {
+	    		result = "one_id";
+	    	}
+	    	else if(idresult == 0 && emailresult == 1) {
+	    		result = "one_email";
+	    	}
+	    	else {
+	    		result = "both";
+	    	}
+	    	return "{\"result\" : \"" + result+ " \" }";
+	    }    
 	
 }
