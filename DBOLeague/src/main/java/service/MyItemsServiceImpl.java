@@ -32,5 +32,10 @@ public class MyItemsServiceImpl implements MyItemsService {
 		return dao.minusexp(dto);
 	}
 
+	@Override
+	public int getexp(String member_id) {
+		return dao.getexp(member_id);
+	}
+
 	
 }

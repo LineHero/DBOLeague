@@ -36,7 +36,8 @@ public class MyItemShopController {
 		
 		if (dto != null) {
 			mv.addObject("login", "true");
-			mv.addObject("exp", dto.getMember_allexp());
+			int exp = service.getexp(dto.getMember_id());
+			mv.addObject("exp", exp);
 			List<String> solditem = service.getsolditem(dto.getMember_id());
 			for (String string : solditem) {
 				mv.addObject(string, "sold");

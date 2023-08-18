@@ -13,6 +13,10 @@
 	<update id="minusexp" parameterType="memberDto">
 		update member set member_allexp = #{member_allexp} where member_id = #{member_id};
 	</update>
+	
+	<select id="getexp" parameterType="String">
+		select member_allexp from member where member_id = #{member_id};
+	</select>
 </mapper>
 
 

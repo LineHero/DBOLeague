@@ -9,4 +9,5 @@ public interface MyItemsService {
 	public int buyitem(MyItemsDTO dto);
 	public List<String> getsolditem(String member_id);
 	public int minusexp(MemberDTO dto);
+	public int getexp(String member_id);
 }
