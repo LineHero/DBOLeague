@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <html lang="ko">
   <head>
     <meta charset="UTF-8" />
@@ -7,42 +9,38 @@
     <script src="/js/jquery-3.6.4.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/cursor.css" />
-    <link rel="stylesheet" href="/css/common.css" />
     <link rel="stylesheet" href="/css/mypage.css" />
-    <!-- <script src="../js/loading.js"></script>
+    <script src="../js/loading.js"></script>
 		<link href="../css/loading.css" rel="stylesheet" type="text/css" />
-		 -->
   </head>
   <body>
     <div class="wrapper">
-    	<%-- <%@ include file="/WEB-INF/views/loading.jsp" %> --%>
+    	<%@ include file="/WEB-INF/views/loading.jsp" %>
       <header>
-      	<div id="header-wrapper">
-	        <div id="home">
-	        	<span class="font-M cursorPointer">HOME</span>
-	        </div>
-	        <div id="title">
-	          <span class="font-XL">DBO LEAGUE - My Page</span>
-	        </div>
-	        <div id="id-logout">
-	          <span class="font-S cursorPointer">${memberDto.member_id}</span> | 
-	          <span id="logout-btn" class="font-S cursorPointer">로그아웃</span>
-	        </div>
-      	</div>
+        <div id="home">
+        	<span class="font-S cursorPointer">메인 화면으로</span>
+        </div>
+        <div id="title">
+          <span class="font-XL">DBO LEAGUE - My Page</span>
+        </div>
+        <div id="id-logout">
+          <span id="mypage-btn" class="font-S cursorPointer">마이페이지</span> | 
+          <span id="logout-btn" class="font-S cursorPointer">로그아웃</span>
+        </div>
       </header>
       <main>
         <div id="main-header">
           <div id="user-info" class="font-M">
             <ul>
-              <li>Lv1. ${memberDto.member_nick}</li>
+              <li>Lv${member_lv}. ${memberDto.member_nick}</li>
               <li>소속팀 : ${memberDto.member_team}</li>
               <li>이메일 : ${memberDto.member_email}</li>
               <li style="display: flex; align-items: center">
               	<span>EXP : </span>
               	<div class="progress" style="width: 200px; margin: 0 10px;">
-								  <div class="progress-bar bg-success" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+								  <div class="progress-bar bg-success" role="progressbar" style="width: ${exp_percent}%;" aria-valuenow="${exp_percent}" aria-valuemin="0" aria-valuemax="100"></div>
 								</div>
-            		<span>25 / 100</span>
+            		<span>${exp_percent} / 100(%)</span>
               </li>
             </ul>
           </div>
@@ -116,45 +114,41 @@
 	                    <td>도전 회차</td>
 	                    <td>도전 날짜</td>
 	                  </tr>
-	                	<c:forEach var="recordlist" items="${singleRecords}">
-	                		<tr>
-		                		<c:forEach var="record" items="${recordlist}" varStatus="vs">
-			                    <td>${record}</td>
-			                  </c:forEach>
-		                  </tr>
-	                	</c:forEach>
+	                  <c:if test="${!empty singleRecords}">
+		                	<c:forEach items="${singleRecords}" var="record" varStatus="vs">
+		                		<tr id="${vs.index}">
+	               					<td>${record.single_result}</td>
+	                				<td>${record.single_all}회</td>
+	                				<td>${fn:split(record.exp_date, ".")[0]}</td>
+                				</tr>
+		                	</c:forEach>
+	                	</c:if>
 	                </tbody>
 	              </table>
+	              <%--
+                <c:if test="${empty singleRecords}">
+                	<div>아직 게임을 플레이하지 않았어요..</div>
+                </c:if>
+                --%>
               </div>
             </div>
           </section>
         </div>
       </main>
     </div>
-    <div id="record-detail" style="display: inline">
+    <div id="record-detail" style="display: none">
     	<p style="margin: 0px; padding: 3px 3px 3px 10px;">전적 상세내용</p>
     	<p style="margin: 0px; padding: 3px 3px 3px 10px;">정답 : 5314</p>
     	<table>
     		<tbody>
 	    		<tr>
-	    			<td style="width: 20%">회차</td>
-	    			<td style="width: 50%">도전한 수</td>
-	    			<td style="width: 30%">결과</td>
+	    			<td style="width: 20%;">회차</td>
+	    			<td style="width: 50%;">도전한 수</td>
+	    			<td style="width: 30%;">결과</td>
 	    		</tr>
-    			<c:forEach items="${singleDetails[0]}" var="inning">
-    				<tr>
-		    			<td>${inning.innings_count}</td>
-		    			<td>5314</td>
-		    			<td><span style="color: FFD400">${inning.innings_strike}S</span> <span style="color: green">${inning.innings_ball}B</span></td>
-	    			</tr>
-    			</c:forEach> 
     		</tbody>
     	</table>
     </div>
   </body>
   <script src="/js/mypage.js"></script>
-  <script>
-  	console.log("${singleRecords}");
-  	console.log("${singleDetails}");
-  </script>
 </html>

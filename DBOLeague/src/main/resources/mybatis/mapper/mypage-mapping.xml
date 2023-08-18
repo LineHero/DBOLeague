@@ -15,6 +15,12 @@
 	where member_id = #{member_id}
 </update>
 
+<!-- 회원의 현재 비밀번호 가져오기 -->
+<select id="selectMemberCurPw" parameterType="memberDto">
+	select member_pw from member
+	where member_id = #{member_id}
+</select>
+
 <!-- 회원탈퇴 -->
 <delete id="deleteMember" parameterType="String">
 	delete from member where member_id = #{member_id}

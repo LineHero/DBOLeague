@@ -35,17 +35,28 @@ public class MypageServiceImpl implements MypageService{
 		return dao.updateMemberPw(dto);
 	}
 	
+	// 회원의 현재 비밀번호
+	@Override
+	public String selectMemberCurPw(MemberDTO dto) {
+		return dao.selectMemberCurPw(dto);
+	}
+	
 	// 회원탈퇴
 	@Override
 	public int deleteMember(String member_id) {
 		return dao.deleteMember(member_id);
 	}
-	
+
 	// 회원 최근 전적(싱글 게임)
 	@Override
-	public Map<String, Object> getLatestRecords(String member_id) {
+	public Map<String, Object> getLatestRecords(String member_id, int detailIdx) {
+		Map<String, Object> serviceResult = new HashMap<>(); // 결과 반환 map
+		
 		// 회원의 최근 5게임 single_id, exp_date를 exp 테이블에서 가져옴
 		List<ExpDTO> expDtos = dao.selectLatestExps(member_id);
+		
+		// 회원이 게임을 플레이한 적이 없으면 return
+		if (expDtos.isEmpty()) return serviceResult; 
 		
 		// 가져온 결과를 각각 single_ids, exp_dates 리스트에 저장
 		List<Integer> single_ids = new ArrayList<>();
@@ -55,28 +66,22 @@ public class MypageServiceImpl implements MypageService{
 			exp_dates.add(dto.getExp_date());
 		}
 		
-		// 회원의 최근 5게임 single_all, single_result를 single 테이블에서 가져옴
-		HashMap<String, Object> map = new HashMap<>();
-		map.put("single_ids", single_ids);
-		map.put("member_id", member_id);
-		List<SingleDTO> singleDtos = dao.selectLatestSingleRecords(map);
-		
-		// 회원의 최근 5게임 innings_count, innings_strike, innings_ball 가져옴
-		List<ArrayList<InningsDTO>> inningsDtos = new ArrayList<>();
-		for (Integer single_id : single_ids) {
-			ArrayList<InningsDTO> temp = dao.selectLatestInnings(single_id);
-			inningsDtos.add(temp);
+		// 회원의 최근 전적 5개 가져옴
+		List<SingleDTO> singleDtos = getLatestSingleRecords(single_ids, member_id);; 
+		List<InningsDTO> inningsDtos = null; // 각 싱글 게임 회차별 결과
+		if (detailIdx >= 0) { // 상세보기일 경우
+			// 선택한 detailIdx에 해당하는 전적 상세 내용(innings_count, innings_strike, innings_ball) 가져옴
+			inningsDtos = dao.selectLatestInnings(single_ids.get(detailIdx));
 		}
 		
-		// 
-		Map<String, Object> serviceResult = new HashMap<>();
-		List<List<String>> singleRecords = new ArrayList<>();
+		// 결과 반환
+		List<Map<String, String>> singleRecords = new ArrayList<>();
 		for (int i = 0; i < singleDtos.size(); i++) {
-			List<String> temp = new ArrayList<>();
-			// exp_date는 날짜만 보여줄 거면 여기에서 자르면 됨
-			temp.add(String.valueOf(singleDtos.get(i).isSingle_result()));
-			temp.add(String.valueOf(singleDtos.get(i).getSingle_all()));
-			temp.add(String.valueOf(exp_dates.get(i)));
+			Map<String, String> temp = new HashMap<>();
+			if(singleDtos.get(i).isSingle_result()) temp.put("single_result", "성공");
+			else temp.put("single_result", "실패");
+			temp.put("single_all", String.valueOf(singleDtos.get(i).getSingle_all()));
+			temp.put("exp_date", String.valueOf(exp_dates.get(i)));
 			singleRecords.add(temp);
 		}
 		serviceResult.put("singleRecords", singleRecords);
@@ -85,5 +90,12 @@ public class MypageServiceImpl implements MypageService{
 		return serviceResult;
 	}
 	
+	// 회원의 최근 5게임 single_all, single_result를 single 테이블에서 가져옴
+	public List<SingleDTO> getLatestSingleRecords(List<Integer> single_ids, String member_id) {
+		HashMap<String, Object> map = new HashMap<>();
+		map.put("single_ids", single_ids);
+		map.put("member_id", member_id);
+		return dao.selectLatestSingleRecords(map);
+	}
 	
 }
