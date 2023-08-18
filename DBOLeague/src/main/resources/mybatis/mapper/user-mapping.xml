@@ -12,6 +12,14 @@
 	select * from member where member_id = #{member_id} and member_pw = #{member_pw};
 </select>
 
+<select id="isMemberIdExist" resultType="int" parameterType="String">
+	select count(*) from member where member_id = #{inputId}
+</select>
+
+<select id="isMemberEmailExist" resultType="int" parameterType="String">
+	select count(*) from member where member_email = #{inputEmail}
+</select>
+
 </mapper>
 
 

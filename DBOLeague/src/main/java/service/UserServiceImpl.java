@@ -19,6 +19,14 @@ public class UserServiceImpl implements UserService {
 	public MemberDTO signIn(MemberDTO dto) {
 		return dao.signIn(dto);
 	}
+	
+    public int isMemberIdExist(String inputId) {
+    	return dao.isMemberIdExist(inputId);
+    }
+    
+    public int isMemberEmailExist(String inputEmail) {
+    	return dao.isMemberEmailExist(inputEmail);
+    }	
 
 	
 }
