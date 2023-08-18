@@ -30,7 +30,7 @@
 <select id="selectLatestExps" parameterType="String" resultType="expDto">
 	select single_id, exp_date from exp 
 	where member_id = #{member_id}
-	order by exp_date desc, single_id asc
+	order by exp_date desc, single_id desc
 	limit 5
 </select>
  
@@ -42,14 +42,26 @@
  	(<foreach collection="single_ids" separator="," item="single_id">
 	 	#{single_id}
  	</foreach>)
+ 	order by single_id desc;
 </select>
 
 <!-- 최근 5게임 상세 내용 조회하기 -->
 <select id="selectLatestInnings" parameterType="int" resultType="inningsDto">
 	select innings_count, innings_strike, innings_ball, innings_chall from innings
 	where single_id = #{single_id}
+	order by single_id desc;
 </select>
 
+<!-- 게임 결과에 따라 member 테이블 업데이트 -->
+<!-- 
+<update id="updateMemberGameResult" parameterType="hashmap">
+	update member set 
+	member_allexp = member_allexp + #{gain_exp},
+	member_total = member_total + 1,
+	member_win = member_win + #{single_result}
+	where member_id = #{member_id}
+</update>
+ -->
 
 </mapper>
 
