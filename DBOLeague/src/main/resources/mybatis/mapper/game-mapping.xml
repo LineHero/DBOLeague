@@ -7,13 +7,15 @@
 	(
 		member_id,
 		single_all,
-		single_result
+		single_result,
+		single_answer 
 	)
 	values 
 	(
 		#{member_id}, 
 		#{single_all}, 
-		#{single_result} 
+		#{single_result},
+		#{single_answer}  
 	)
 	<selectKey resultType="int" keyProperty="single_id" order="AFTER">
         SELECT LAST_INSERT_ID()
@@ -21,7 +23,7 @@
 </insert>
 
 <update id="updateSingle" parameterType="singleDto">
-	update single set single_all = #{single_all}, single_result = #{single_result}
+	update single set single_all = #{single_all}, single_result = #{single_result}, single_answer = #{single_answer}
 	where single_id = #{single_id}
 </update>
 
@@ -31,14 +33,16 @@
 		single_id,
 		innings_count,
 		innings_strike,
-		innings_ball
+		innings_ball,
+		innings_chall 
 	)
 	values 
 	(
 		#{single_id}, 
 		#{innings_count}, 
 		#{innings_strike},
-		#{innings_ball}
+		#{innings_ball},
+		#{innings_chall}
 	)
 </insert>
 <insert id="insertExp" parameterType="expDto">
