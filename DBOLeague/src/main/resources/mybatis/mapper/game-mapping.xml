@@ -27,6 +27,11 @@
 	where single_id = #{single_id}
 </update>
 
+<update id="updateMember" parameterType="memberDto">
+	update member set member_allexp = #{member_allexp}, member_total = #{member_total}, member_win = #{member_win}
+	where member_id = #{member_id}
+</update>
+
 <insert id="insertInnings" parameterType="inningsDto">
 	insert into innings
 	(
@@ -59,6 +64,9 @@
 		#{single_id}
 	)
 </insert>
+<select id="selectMember" resultType="memberDto"  parameterType="String">
+select * from member where member_id = #{member_id}
+</select>
 </mapper>
 
 

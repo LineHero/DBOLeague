@@ -1,22 +1,19 @@
 package controller;
 
-import java.util.ArrayList;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import dto.ExpDTO;
 import dto.InningsDTO;
+import dto.MemberDTO;
 import dto.SingleDTO;
+import jakarta.servlet.http.HttpSession;
 import service.GameServiceImpl;
-import service.MypageService;
-import service.UserService;
 
 
 @Controller
@@ -27,20 +24,28 @@ public class GameController {
 	
 	//게임페이지
 	@GetMapping("/game")
-	public ModelAndView game() {
+	public ModelAndView game(HttpSession session) {
+		MemberDTO medto = (MemberDTO)session.getAttribute("userlogin");
 		SingleDTO dto = new SingleDTO();
-		dto.setMember_id("aaa");
-		int single_id = service.insertSingle(dto);
+		int single_id = 0;
+		if(medto != null) {
+			dto.setMember_id(medto.getMember_id());
+			single_id = service.insertSingle(dto);
+		}
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("single_id",single_id);
-		mv.addObject("member_id","aaa");
+		if(medto != null) {
+			mv.addObject("single_id",single_id);
+			mv.addObject("member_id",medto.getMember_id());
+		}
 		mv.setViewName("game");
 		return mv;
 	}
 	
 	@RequestMapping("/ajaxResult")
 	@ResponseBody
-	public String ajaxResult(int single_all, int single_result, int single_id, String member_id, int single_answer ) {
+	public String ajaxResult(HttpSession session,int single_all, int single_result, int single_id, String member_id, String single_answer) {
+		MemberDTO mydto = service.selectMember(member_id);
+		session.getAttribute("userlogin");
 		boolean result = true;
 		if(single_result == 0) {
 			result = false;
@@ -58,12 +63,25 @@ public class GameController {
 		dto.setSingle_result(result);
 		dto.setSingle_answer(single_answer);
 		service.updateSingle(dto);
+		MemberDTO medto = new MemberDTO();
+		medto.setMember_id(member_id);
+		medto.setMember_total(mydto.getMember_total()+1);
+		if(single_result == 1) {
+			medto.setMember_allexp(mydto.getMember_allexp()+(500+((9-single_all)*10)));
+			medto.setMember_win(mydto.getMember_win()+1);
+		}else {
+			medto.setMember_allexp(mydto.getMember_allexp());
+			medto.setMember_win(mydto.getMember_win());
+		}
+		service.updateMember(medto);
 		return "success";
 	}
 	
 	@RequestMapping("/score")
 	@ResponseBody
-	public String score(int  strikes, int  balls, int single_id, int innings_count, int innings_chall) {
+	public String score(HttpSession session,int  strikes, int  balls, int single_id, int innings_count, String innings_chall) {
+		System.out.println(innings_chall);
+		session.getAttribute("userlogin");
 		InningsDTO dto = new InningsDTO();
 		dto.setInnings_ball(balls);
 		dto.setInnings_strike(strikes);
