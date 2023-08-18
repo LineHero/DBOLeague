@@ -12,7 +12,7 @@
 <script src="../js/loading.js"></script>
 <link href="../css/loading.css" rel="stylesheet" type="text/css" />
 <link href="../css/stars.css" rel="stylesheet" type="text/css" />
-
+<link href="../css/itemseffect.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 	<div class="wrapper">
@@ -21,14 +21,23 @@
         <div id="stars2"></div>
 		<header>
 			<div id="home">
-				<span class="cursorPointer headermenu" onclick="goPage('main')">메인 화면으로</span>
+				<span class="cursorPointer headermenu" onclick="goPage('maintest')">메인 화면으로</span>
 			</div>
 			<div id="title">
 				<span>DBO LEAGUE - Personal Ranking</span>
 			</div>
 			<div id="id-logout">
-				<span class="cursorPointer headermenu" onclick="goPage('mypage')">마이페이지</span> | <span
+			<c:choose>
+				<c:when test="${not empty login}">
+					<span class="cursorPointer headermenu" onclick="goPage('mypage')">마이페이지</span> | <span
 					class="cursorPointer headermenu" onclick="goPage('logout')">로그아웃</span>
+				</c:when>
+				<c:otherwise>
+					<span class="cursorPointer headermenu" onclick="goPage('login')">로그인</span> | <span
+					class="cursorPointer headermenu" onclick="goPage('join')">회원가입</span>
+				</c:otherwise>
+			</c:choose>
+				
 			</div>
 		</header>
 		<main>
@@ -87,9 +96,9 @@
 												</div>
 											</c:otherwise>
 										</c:choose>
-										<div class="place"> ${status.count} </div>
-										<div class="nickname">${dto.member_nick}</div>
-										<div class="expamount">${dto.exp_total} exp.</div>
+										<div class="place rainbow"><span> ${status.count} </span></div>
+										<div class="nickname glowing"><span>${dto.member_nick}</span></div>
+										<div class="expamount jumping"><span>${dto.exp_total} exp.</span></div>
 									</div>
 								</c:forEach>
 							</c:otherwise>

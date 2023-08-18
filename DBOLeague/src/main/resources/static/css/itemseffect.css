@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+/* 콩콩뛰는 닉네임 */
+.jumping span {
+	position: relative;
+	top: 1px;
+	animation: bounce 0.3s ease infinite alternate;
+}
+
+@keyframes bounce {
+  100% {
+    top: -5px;
+  }
+}
+
+
+/* 빛나는 닉네임 */
+.glowing span {
+	animation: glow 0.5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% {
+    color: #FFF;
+    text-shadow: 0 0 10px #0652DD, 0 0 50px #0652DD, 0 0 100px #0652DD;
+  }
+  
+  10%, 90% {
+    color: #111;
+    text-shadow: none;
+  }
+}
+
+/* 그래디언트 무지개색 닉네임 */
+.rainbow span {
+  background-image:-webkit-linear-gradient(92deg,red,blue);
+  background-image:linear-gradient(92deg,red,blue);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  text-fill-color:transparent;
+  -moz-animation:hue 1s infinite linear;
+  -o-animation:hue 1s infinite linear;
+  -webkit-animation:hue 1s infinite linear;
+  animation:hue 1s infinite linear
+}
+  
+.neon span {
+  color: yellow;
+  background-image:-webkit-linear-gradient(92deg,red,blue);
+  background-image:linear-gradient(92deg,red,blue);
+  -webkit-background-clip:text;
+  -moz-animation:hue 1s infinite linear;
+  -o-animation:hue 1s infinite linear;
+  -webkit-animation:hue 1s infinite linear;
+  animation:hue 1s infinite linear
+}
+@-moz-keyframes hue{
+  from{
+    -webkit-filter:hue-rotate(0deg);
+    filter:hue-rotate(0deg)
+  }
+  to{
+    -webkit-filter:hue-rotate(-360deg);
+    filter:hue-rotate(-360deg)
+  }
+}
+@-o-keyframes hue{
+  from{
+    -webkit-filter:hue-rotate(0deg);
+    filter:hue-rotate(0deg)
+  }
+  to{
+    -webkit-filter:hue-rotate(-360deg);
+    filter:hue-rotate(-360deg)
+  }
+}
+@-webkit-keyframes hue{
+  from{
+    -webkit-filter:hue-rotate(0deg);
+    filter:hue-rotate(0deg)
+  }
+  to{
+    -webkit-filter:hue-rotate(-360deg);
+    filter:hue-rotate(-360deg)
+  }
+}
+@keyframes hue{
+  from{
+  -webkit-filter:hue-rotate(0deg);
+  filter:hue-rotate(0deg)
+  }
+  to{
+  -webkit-filter:hue-rotate(-360deg);
+  filter:hue-rotate(-360deg)
+  }
+}
