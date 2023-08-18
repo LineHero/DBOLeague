@@ -8,6 +8,7 @@ public class MainController {
 	
 	@RequestMapping("/maintest")
 	public String maintest() {
+		
 		return "DBOMain";
 	}
 }
