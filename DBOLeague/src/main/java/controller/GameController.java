@@ -47,11 +47,15 @@ public class GameController {
 		MemberDTO mydto = service.selectMember(member_id);
 		session.getAttribute("userlogin");
 		boolean result = true;
+		ExpDTO expdto = new ExpDTO();
 		if(single_result == 0) {
 			result = false;
+			expdto.setMember_id(member_id);
+			expdto.setSingle_id(single_id);
+			expdto.setExp_amount(0);
+			service.insertExp(expdto);
 		}
 		if(single_result == 1) {
-			ExpDTO expdto = new ExpDTO();
 			expdto.setMember_id(member_id);
 			expdto.setSingle_id(single_id);
 			expdto.setExp_amount(500+((9-single_all)*10));
