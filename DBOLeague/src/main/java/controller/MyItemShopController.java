@@ -49,6 +49,7 @@ public class MyItemShopController {
 			return mv;
 		}
 		
+		mv.addObject("nowpage", "nicknameshop");
 		mv.setViewName("myItemShop");
 		return mv;
 	}
@@ -74,7 +75,7 @@ public class MyItemShopController {
 				int price = Integer.parseInt(parts2[1]);
 				MemberDTO minusprice = new MemberDTO();
 				minusprice.setMember_id(dto.getMember_id());
-				minusprice.setMember_allexp(dto.getMember_allexp() - price);
+				minusprice.setMember_allexp(price);
 				dto.setMember_allexp(dto.getMember_allexp() - price);
 				int result = service.buyitem(midto);
 				int result2 = service.minusexp(minusprice);
@@ -89,6 +90,32 @@ public class MyItemShopController {
 			mv.setView(rv);
 			return mv;
 		}
+		
+	}
+	
+	@RequestMapping("/mycustoms")
+	public ModelAndView mycustoms(@SessionAttribute(name = "userlogin", required = false)MemberDTO dto, HttpServletResponse response) {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0); // Proxies.
+		ModelAndView mv = new ModelAndView();
+		
+		if (dto != null) {
+			mv.addObject("login", "true");
+			int exp = service.getexp(dto.getMember_id());
+			mv.addObject("exp", exp);
+			List<MyItemsDTO> myitems = service.getallmynickitem(dto.getMember_id());
+			mv.addObject("myitems", myitems);
+		} else {
+			RedirectView rv = new RedirectView();
+			rv.setUrl("/login");
+			mv.setView(rv);
+			return mv;
+		}
+		
+		mv.addObject("nowpage", "customs");
+		mv.setViewName("mycustoms");
+		return mv;
 		
 	}
 

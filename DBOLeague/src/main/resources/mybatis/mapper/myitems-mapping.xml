@@ -11,11 +11,15 @@
 	</select>
 	
 	<update id="minusexp" parameterType="memberDto">
-		update member set member_allexp = #{member_allexp} where member_id = #{member_id};
+		update member set member_allexp = member_allexp - #{member_allexp} where member_id = #{member_id};
 	</update>
 	
 	<select id="getexp" parameterType="String">
 		select member_allexp from member where member_id = #{member_id};
+	</select>
+	
+	<select id="getallmynickitem" parameterType="String" resultType="myitemsDto">
+		select * from nicknameitem where member_id = #{member_id};
 	</select>
 </mapper>
 

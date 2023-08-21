@@ -37,5 +37,10 @@ public class MyItemsServiceImpl implements MyItemsService {
 		return dao.getexp(member_id);
 	}
 
+	@Override
+	public List<MyItemsDTO> getallmynickitem(String member_id) {
+		return dao.getallmynickitem(member_id);
+	}
+
 	
 }

@@ -51,7 +51,7 @@
 						<img src="../img/Sprite-0001.png" alt=""
 							data-animated="../img/Sprite-0001.gif"
 							data-static="../img/Sprite-0001.png" class="cursorPointer arrows"
-							onclick="goSpecificWeek(${year}, ${week - 1})" />
+							onclick="goSpecificPage('${nowpage}')" />
 					</div>
 					<div class="items">
 						<div class="shoptitle">
@@ -123,7 +123,7 @@
 						<img src="../img/Sprite-0002.png" alt=""
 							data-animated="../img/Sprite-0002.gif"
 							data-static="../img/Sprite-0002.png" class="cursorPointer arrows"
-							onclick="goSpecificWeek(${year}, ${week + 1})" />
+							onclick="goSpecificPage('${nowpage}')" />
 					</div>
 				</section>
 			</div>
