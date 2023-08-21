@@ -5,7 +5,7 @@
 
 <insert id="signUp" parameterType="memberDto">
     insert into member (member_id, member_pw, member_nick, member_email, member_team, member_allexp, member_total, member_win)
-    values (#{member_id}, #{member_pw}, #{member_nick}, #{member_email}, "자바 스크립터즈", 0, 0, 0)
+    values (#{member_id}, #{member_pw}, #{member_nick}, #{member_email}, #{member_team}, 0, 0, 0)
 </insert>
 
 <select id="signIn" parameterType="memberDto" resultType="memberDto">
