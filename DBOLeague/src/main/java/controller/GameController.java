@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -24,16 +25,14 @@ public class GameController {
 	
 	//게임페이지
 	@GetMapping("/game")
-	public ModelAndView game(HttpSession session) {
+	public ModelAndView game(HttpSession session, @RequestParam(value="mode",required=false ,defaultValue="single")String mode) {
 		MemberDTO medto = (MemberDTO)session.getAttribute("userlogin");
 		SingleDTO dto = new SingleDTO();
 		int single_id = 0;
-		if(medto != null) {
+		ModelAndView mv = new ModelAndView();
+		if(mode.equals("rank") && medto != null) {
 			dto.setMember_id(medto.getMember_id());
 			single_id = service.insertSingle(dto);
-		}
-		ModelAndView mv = new ModelAndView();
-		if(medto != null) {
 			mv.addObject("single_id",single_id);
 			mv.addObject("member_id",medto.getMember_id());
 		}
