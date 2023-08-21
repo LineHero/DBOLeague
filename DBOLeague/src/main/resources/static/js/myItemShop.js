@@ -6,6 +6,15 @@ $(".arrows").mouseout(function() {
 });
 
 function goPage(page) {
-	location.href = "/" + page;
+	location.href = '/' + page;
+}
+
+
+function goSpecificPage(page) {
+	if (page == 'nicknameshop') {
+		location.href = "/mycustoms";
+	} else if (page == 'customs') {
+		location.href = "/myItemShop";
+	}
 }
 

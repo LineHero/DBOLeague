@@ -3,14 +3,14 @@
 <div id="modal-container">
 	<div class="modal-background">
 		<div class="modal">
-			<h2>* 이 아이템을 구매하시겠어요? *</h2>
+			<h2 id="modalselection"></h2>
 			<div class="modallayout">
 				<div class="motitle">
 					<p class="buyingwhat"></p>
 					<p class="howmuch"></p>
 				</div>
 				<div>
-					<div class="moex"><span>아이템 사용시 이렇게 나와요!!</span></div>
+					<div class="moex"><span id="spanexplain"></span></div>
 				</div>
 				<div class="modalconfirm">
 					<div class="modalyes"><span class="modalbtn yesc cursorPointer">예</span></div>
