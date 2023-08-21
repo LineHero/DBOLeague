@@ -101,7 +101,7 @@ h5 {
 }
 
 .id-pw-td {
-  margin-left: 12px; /* 체크박스와 라벨 사이의 간격 조정 */
+  margin-left: 0.75rem; /* 체크박스와 라벨 사이의 간격 조정 */
 }
 
 .id-save {
@@ -116,13 +116,13 @@ h5 {
 }
 
 #member_check_save_id0 + label {
-	font-size: 15px;
+	font-size: 0.938rem;
   display: inline-block;
   /* vertical-align: middle; */
   cursor: pointer;
-  padding-left: 25px; /* 체크박스 크기에 따라 조절 */
+  padding-left: 1.563rem; /* 체크박스 크기에 따라 조절 */
   background-repeat: no-repeat;
-  background-size: 18px; /* 아이콘 크기에 맞게 조절 */
+  background-size: 1.125rem; /* 아이콘 크기에 맞게 조절 */
   background-position: left center;
   position: relative; /* 부모 위치에 따라 자식 아이콘을 배치 */
 }
@@ -134,11 +134,11 @@ h5 {
 #member_check_save_id0 + label::before {
   content: "";
   display: inline-block;
-  width: 20px; /* 체크박스 크기에 맞게 조절 */
-  height: 20px; /* 체크박스 크기에 맞게 조절 */
+  width: 1.25rem; /* 체크박스 크기에 맞게 조절 */
+  height: 1.25rem; /* 체크박스 크기에 맞게 조절 */
   background-image: url('/img/key.svg'); /* 기본 아이콘 이미지 */
   background-repeat: no-repeat;
-  background-size: 18px;
+  background-size: 1.125rem;
   position: absolute; /* 상대 위치에 따라 배치 */
   top: 0;
   left: 0;
