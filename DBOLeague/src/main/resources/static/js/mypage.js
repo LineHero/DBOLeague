@@ -3,7 +3,7 @@
  */
 
 // 메일 화면으로 클릭
-$("#title").click(function() {
+$("#home").click(function() {
 	location.href = "/maintest";
 }); //click
 

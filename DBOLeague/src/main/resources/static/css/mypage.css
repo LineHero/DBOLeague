@@ -31,6 +31,10 @@ body {
   display: flex;
 	align-items: center;
 	justify-content: center;
+	-webkit-user-select:none;
+  	-moz-user-select:none;
+  	-ms-user-select:none;
+  	user-select:none
 }
 .wrapper {
   background: radial-gradient(ellipse at bottom, #1b2735 0%,#090a0f 100%);
@@ -56,10 +60,6 @@ main > div {
   width: 78%;
   margin: 0 auto;
 }
-#main-header,
-#main-body {
-	opacity: 0.85;
-}
 #main-header {
  	height: 25%;
   display: flex;
@@ -67,7 +67,10 @@ main > div {
   justify-content: flex-start;
   align-items: center;
   margin-bottom: 4%;
-  background-color: white;
+  color: white;
+  background-color: black;
+  border: 6px groove lightgray;
+	border-radius: 11px;
 }
 #main-body {
   display: flex;
@@ -182,6 +185,10 @@ section > div {
 #play-stat {
 	display: flex;
 	flex-direction: column;
+	color: white;
+	border: 6px groove lightgray;
+	border-radius: 11px;
+	background-color: black;
 }
 #latest-result > div,
 #play-stat > div {
@@ -213,7 +220,8 @@ section > div {
 #play-stat td {
 	background-color: black;
   height: 45px;
-  border: 3px solid white;
+	border: 6px groove white;
+	border-radius: 11px;
 }
 #latest-result tr:first-of-type {
 	color: white;
@@ -233,6 +241,9 @@ section > div {
 	background-color: black;
 	color: white;
 	overflow: hidden;
+	border: 6px groove white;
+	border-radius: 11px;
+	background-color: black;
 }
 #record-detail table {
 	display: flex;
