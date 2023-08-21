@@ -24,10 +24,13 @@ $(document).ready(function() {
 	
 	$("#login_submit_btn").on('click', function(event){
 		 	event.preventDefault();
+		 	
+		 	var Error = $("#Error");
 
 			//아이디, 비번에 빈칸 입력시 경고창. + 둘 다 입력시 submit
 		    if (loginId.value.trim() === "" || loginPassword.value.trim() === "") {
-		      alert("빈칸을 입력해주세요"); 
+		    	Error.text("빈칸을 모두 입력해 주세요.");
+		    	Error.show();
 		    } else {
 		      loginForm.submit(); 
 		    }
@@ -49,39 +52,50 @@ $(document).ready(function() {
 	    });
 });
 
-//아이디 저장 체크박스
 window.addEventListener("DOMContentLoaded", function() {
-  var checkbox = document.getElementById("member_check_save_id0");
-  var backgroundUrlOff = "/img/key.svg";
-  var backgroundUrlOn = "/img/lock-2.svg";
-  var inputId = document.getElementById("member_id");
+	  var checkbox = document.getElementById("member_check_save_id0");
+	  var backgroundUrlOff = "/img/key.svg"; 
+	  var backgroundUrlOn = "/img/lock-2.svg";
+	  var inputId = document.getElementById("member_id");
 
-  // 아이디 정보를 로컬 스토리지에 저장하는 함수
-  function saveIdToLocalStorage() {
-    if (checkbox.checked) {
-      var savedId = inputId.value;
-      localStorage.setItem("savedId", savedId);
-    } else {
-      localStorage.removeItem("savedId");
-    }
-  }
+	  function saveIdToLocalStorage() {
+	    try {
+	      if (checkbox.checked) {
+	        var savedId = inputId.value;
+	        localStorage.setItem("savedId", savedId);
+	      } else {
+	        localStorage.removeItem("savedId");
+	      }
+	    } catch (error) {
+	      console.error("Error accessing local storage:", error);
+	    }
+	  }
 
-  checkbox.addEventListener("change", function() {
-    checkbox.style.backgroundImage = checkbox.checked ? "url(" + backgroundUrlOn + ")" : "url(" + backgroundUrlOff + ")";
-    saveIdToLocalStorage(); // 아이디 정보 저장 함수 호출
-  });
+	  function updateCheckboxStyle() {
+	    checkbox.style.backgroundImage = checkbox.checked ? "url(" + backgroundUrlOn + ")" : "url(" + backgroundUrlOff + ")";
+	  }
 
-  // 페이지 로드 시 로컬 스토리지에서 아이디 정보를 불러와서 입력란에 설정
-  var savedId = localStorage.getItem("savedId");
-  if (savedId) {
-    inputId.value = savedId;
-    checkbox.checked = true;
-    checkbox.style.backgroundImage = "url(" + backgroundUrlOn + ")";
-  }
+	  checkbox.addEventListener("change", function() {
+	    updateCheckboxStyle();
+	    saveIdToLocalStorage();
+	  });
 
-  // 아이디 입력란 값이 변경될 때마다 로컬 스토리지 업데이트
-  inputId.addEventListener("input", saveIdToLocalStorage);
-});
+	  inputId.addEventListener("input", function() {
+	    updateCheckboxStyle();
+	    saveIdToLocalStorage();
+	  });
+
+	  try {
+	    var savedId = localStorage.getItem("savedId");
+	    if (savedId) {
+	      inputId.value = savedId;
+	      checkbox.checked = true;
+	      updateCheckboxStyle();
+	    }
+	  } catch (error) {
+	    console.error("Error accessing local storage:", error);
+	  }
+	});
 </script>
 <body>
 	<div class="wrapper">
@@ -103,16 +117,17 @@ window.addEventListener("DOMContentLoaded", function() {
 					<label><input id="member_pw" name="member_pw"
 						autocomplete="off" type="password" maxlength="16" class="cursorPointer"></label>
 				</div>
-				<div class="checkbox">
-					<div class="id-pw-td">
-								<div class="id-save">
-									<input id="member_check_save_id0" name="check_save_id" value="T" type="checkbox">
-                                     <label for="member_check_save_id0">아이디 저장</label>
+				<div class="cursorPointer checkbox">
+					<div class="cursorPointer id-pw-td">
+								<div class="cursorPointer id-save">
+									<input id="member_check_save_id0" name="check_save_id" value="T" type="checkbox" class="cursorPointer">
+                                     <label for="member_check_save_id0" style="color:white" class="cursorPointer">아이디 저장</label>
 								</div>
 								</div>
 						</div>
 				<div class='cursorPointer formindiv'>
 					<h5>${loginfail}</h5>
+					<div id="Error" class="error"></div>
 					<button type="button" id="login_submit_btn" class="cursorPointer">로그인</button>
 				</div>
 			</div>

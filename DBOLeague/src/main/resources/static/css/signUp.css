@@ -90,6 +90,12 @@ input:focus {
     width: 100%;
 }
 
+.error {
+	padding-left: 0.313rem;
+	color: red;
+	font-size:0.938rem;
+}
+
 #join_submit_btn {
 	font-family: 'NeoDGM';
 	font-size: 1.125rem;
