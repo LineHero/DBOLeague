@@ -135,26 +135,46 @@
 	</div>
 </main>
 <script>
+	//비밀번호 유효성 검사
+	function isPasswordValid(password) {
+		// 조건 1: 영문대소문자 + 숫자 조합
+		const regex1 = /^(?=.*[a-zA-Z])(?=.*\d).{8,16}$/;
+		// 조건 2: 영문대소문자 + 특수문자 조합
+		const regex2 = /^(?=.*[a-zA-Z])(?=.*[\W_]).{8,16}$/;
+		// 조건 3: 숫자 + 특수문자 조합
+		const regex3 = /^(?=.*\d)(?=.*[\W_]).{8,16}$/;
+		
+		return regex1.test(password) || regex2.test(password) || regex3.test(password);
+	}
 	$("#change").click(function() {
-		if ($("#curPw").val() === "") {
+		let curPw = $("#curPw").val();
+		let newPw1 = $("#newPw1").val();
+		let newPw2 = $("#newPw2").val();
+		if (curPw === "") {
 			alert("현재 비밀번호를 입력해주세요.");
 			$("#curPw").focus();
 		}
-		else if ($("#newPw1").val() === "") {
+		else if (newPw1 === "") {
 			alert("새 비밀번호를 입력해주세요.");
 			$("#newPw1").focus();
 		}
-		else if ($("#newPw2").val() === "") {
+		else if (newPw2 === "") {
 			alert("새 비밀번호 확인을 입력해주세요.");
 			$("#newPw2").focus();
 		}
+		else if (!isPasswordValid(newPw1)) {
+			alert("비밀번호는 영문 대소문자/숫자/특수문자 중 2가지 이상 조합으로 8자~16자로 설정해주세요.");
+			$("#newPw1").val("");
+			$("#newPw2").val("");
+			$("#newPw1").focus();
+		} 
 		else {
 			$.ajax({
 				url: "/updatePw",
 				data: {
-					"curPw": $("#curPw").val(),
-					"newPw1": $("#newPw1").val(),
-					"newPw2": $("#newPw2").val(),
+					"curPw": curPw,
+					"newPw1": newPw1,
+					"newPw2": newPw2,
 				},
 				dataType: "json",
 				method: "post",
