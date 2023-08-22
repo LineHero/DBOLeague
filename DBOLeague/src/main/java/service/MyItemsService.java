@@ -11,4 +11,6 @@ public interface MyItemsService {
 	public int minusexp(MemberDTO dto);
 	public int getexp(String member_id);
 	public List<MyItemsDTO> getallmynickitem(String member_id);
+	public int onnick(MyItemsDTO dto);
+	public int offnick(MyItemsDTO dto);
 }
