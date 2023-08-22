@@ -267,7 +267,7 @@ function bullsAndCows () {
 	 var single_result = 0;
 	 if ( final ) { 
 		 $(".result").empty();
-		 $(".result").append("<button class=\"nes-btn btn\" onclick=\"document.location.href='/maintest'\">메인으로 이동하기</button>");
+		 $(".result").append("<button class=\"nes-btn btn\" onclick=\"document.location.href='/main'\">메인으로 이동하기</button>");
 		 if ( strikes == 4 ){ 
 			 check_Correct.innerHTML = final;
 			 single_result = 1;
