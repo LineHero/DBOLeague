@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
-import org.springframework.web.servlet.ModelAndView;
 
 import dto.MemberDTO;
 import jakarta.servlet.http.HttpServletRequest;
@@ -75,10 +74,7 @@ public class UserController {
 				
 				session = request.getSession();
 				session.setAttribute("userlogin", medto);
-				
-				String referer = request.getHeader("Referer"); 
-
-				return "redirect:"+ referer;
+				return "redirect:/main";
 			} else {
 				m.addAttribute("loginfail", "아이디 또는 비밀번호가 맞지 않습니다.");
 				return "signIn";
