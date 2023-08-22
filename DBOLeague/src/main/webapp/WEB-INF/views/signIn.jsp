@@ -25,15 +25,21 @@ $(document).ready(function() {
 	$("#login_submit_btn").on('click', function(event){
 		 	event.preventDefault();
 		 	
-		 	var Error = $("#Error");
+		 	 var errorContainer = $("#Error");
+		 	 
+		        errorContainer.text("");
 
-			//아이디, 비번에 빈칸 입력시 경고창. + 둘 다 입력시 submit
-		    if (loginId.value.trim() === "" || loginPassword.value.trim() === "") {
-		    	Error.text("빈칸을 모두 입력해 주세요.");
-		    	Error.show();
-		    } else {
-		      loginForm.submit(); 
-		    }
+		 // 둘 다 입력되지 않은 경우
+		 	  if (loginId.value.trim() === "" && loginPassword.value.trim() === "") {
+		 	    errorContainer.text("아이디와 비밀번호를 모두 입력해 주세요.");
+		 	    errorContainer.show();
+		 	  } else if(loginId.value.trim() === "" || loginPassword.value.trim() === "") {
+		 		 errorContainer.text("빈칸을 입력해 주세요.");
+			 	    errorContainer.show();
+		 	  } else {
+		 	    errorContainer.hide();// 모든 조건이 만족되면 경고창 숨기기
+		 	    loginForm.submit();
+		 	  }
 		});
 
 	  //엔터로 다음칸 가기 : (순서) 아이디-> pw-> 로그인버튼

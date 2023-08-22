@@ -21,7 +21,7 @@
         <div id="stars2"></div>
 		<header>
 			<div id="home">
-				<span class="cursorPointer headermenu" onclick="goPage('maintest')">메인 화면으로</span>
+				<span class="cursorPointer headermenu" onclick="goPage('main')">메인 화면으로</span>
 			</div>
 			<div id="title">
 				<span>DBO LEAGUE - Personal Ranking</span>
@@ -99,7 +99,7 @@
 										<c:choose>
 											<c:when test="${not empty dto.nicknameitem_name}">
 												<div class="place"><span> ${status.count} </span></div>
-												<div class="nickname  ${dto.nicknameitem_name}"><span>${dto.member_nick}</span></div>
+												<div class="nickname ${dto.nicknameitem_name}"><span>${dto.member_nick}</span></div>
 												<div class="expamount"><span>${dto.exp_total} exp.</span></div>
 											</c:when>
 											<c:otherwise>

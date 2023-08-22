@@ -22,28 +22,28 @@
 							<c:forEach items="${myitems}" var="dto">
 								<c:choose>
 									<c:when test="${dto.nicknameitem_use eq true}">
-										<div class="divider">
-											<div class="divitem">
-												<span class="textspans">${dto.nicknameitem_name}</span>
+										<div class="divider confirmuse cursorpointer" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+											<div class="divitem confirmuse cursorpointer"  data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+												<span class="textspans"  data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">${dto.nicknameitem_name}</span>
 											</div>
-											<div class="divex ${dto.nicknameitem_name}">
-												<span class="textspans">적용 예시입니다 !!!</span>
+											<div class="divex confirmuse cursorpointer ${dto.nicknameitem_name}"  data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+												<span class="textspans" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">적용 예시입니다 !!!</span>
 											</div>
-											<div class="divnowwhat">
-												<span class="textspans">적용중</span>
+											<div class="divnowwhat confirmuse cursorpointer" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+												<span class="textspans" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">적용중</span>
 											</div>
 										</div>
 									</c:when>
 									<c:otherwise>
-										<div class="divider">
-											<div class="divitem">
-												<span class="textspans">${dto.nicknameitem_name}</span>
+										<div class="divider confirmuse cursorpointer" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+											<div class="divitem confirmuse cursorpointer" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+												<span class="textspans" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">${dto.nicknameitem_name}</span>
 											</div>
-											<div class="divex ${dto.nicknameitem_name}">
-												<span class="textspans">적용 예시입니다 !!!</span>
+											<div class="divex confirmuse cursorpointer ${dto.nicknameitem_name}" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+												<span class="textspans" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">적용 예시입니다 !!!</span>
 											</div>
-											<div class="divnowwhat">
-												<span class="textspans">미적용</span>
+											<div class="divnowwhat confirmuse cursorpointer" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">
+												<span class="textspans" data-useitem="${dto.nicknameitem_name}" data-nouseitem="${nicknameon}">미적용</span>
 											</div>
 										</div>
 									</c:otherwise>
@@ -57,9 +57,9 @@
 						<span class="modalbtn noc cursorPointer"></span>
 					</div>
 				</div>
-				<form id="itembuy" action="/itembuy" method="post">
-					<input type="hidden" name="item" id="item" /> <input type="hidden"
-						name="price" id="price" />
+				<form id="itemuse" action="/itemuse" method="post">
+					<input type="hidden" name="useitem" id="useitem" /> 
+					<input type="hidden" name="nouseitem" id="nouseitem" />
 				</form>
 			</div>
 		</div>

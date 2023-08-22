@@ -16,7 +16,7 @@
 		justify-content: center;
 		background: none;
 		border: none;
-		margin: 30px 30px;
+		margin: 50px 50px;
 	}
 
 	.main-button img {
@@ -32,7 +32,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		cursor: pointer;
 		font-family: 'NeoDGM';
 		color: white;
 	}
@@ -95,16 +94,74 @@
 	
 	.close-modal {
 		width: 92%;
-		height: 20px;
+		height: 35px;
 		position: block;
 		display: flex;
 		justify-content: flex-end;
 	}
 	
 	.close-modal img {
-		width: 25px;
-		height: 25px;
+		width: 35px;
+		height: 35px;
 		margin: 10px;
+	}
+	
+	.modal2 {
+		width: 80%;
+		height: 80%;
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	    background-image: url('/img/howtoboard.png');
+	    background-size: contain; 
+	    background-repeat: no-repeat;
+	    background-position: center;
+		z-index: 9999;
+	}
+	
+	.close-modal2 {
+		width: 94%;
+		height: 20px;
+		position: block;
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	.close-modal2 img {
+		width: 35px;
+		height: 35px;
+		margin : 15px;
+	}
+	
+	.modal2-content {
+		width: 70%;
+		height: 100%;
+		position: relative;	
+        margin: 10px auto; 
+        text-align: center; 
+	}
+	
+	.howtotitle {
+	  position: absolute;
+	  top: 12%; /* 텍스트를 세로 중앙에 위치시킴 */
+	  left: 50%; /* 텍스트를 가로 중앙에 위치시킴 */
+	  transform: translate(-50%, -50%); /* 위치 조절 */
+	  text-align: center;
+	  font-size: 50px;
+	  font-weight: bold;
+	  color: yellow;
+	  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	}
+	
+	.howtotext {
+		position: absolute;
+		top : 23%;
+		font-size: 30px;
+		text-align: left;
+		color: white;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	}
 	
 	.normalgamebtn {
@@ -188,7 +245,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		cursor: pointer;
 		font-family: 'NeoDGM';
 		color: white;
 	}
@@ -331,7 +387,7 @@
 		justify-content: center;
 		background: none;
 		border: none;
-		margin: 30px 30px;
+		margin: 15px 15px;
 	}
 
 	.main-button img {
@@ -347,7 +403,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		cursor: pointer;
 		font-family: 'NeoDGM';
 		color: white;
 	}
@@ -425,6 +480,64 @@
 		height: 20px;
 		margin: 10px;
 	}
+
+	.modal2 {
+		width: 80%;
+		height: 80%;
+		display: none;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	    background-image: url('/img/howtoboard.png');
+	    background-size: contain; 
+	    background-repeat: no-repeat;
+	    background-position: center;
+		z-index: 9999;
+	}
+	
+	.close-modal2 {
+		width: 94%;
+		height: 20px;
+		position: block;
+		display: flex;
+		justify-content: flex-end;
+	}
+	
+	.close-modal2 img {
+		width: 20px;
+		height: 20px;
+		margin : 15px;
+	}
+	
+	.modal2-content {
+		width: 70%;
+		height: 100%;
+		position: relative;	
+        margin: 10px auto; 
+        text-align: center; 
+	}
+	
+	.howtotitle {
+	  position: absolute;
+	  top: 12%; /* 텍스트를 세로 중앙에 위치시킴 */
+	  left: 50%; /* 텍스트를 가로 중앙에 위치시킴 */
+	  transform: translate(-50%, -50%); /* 위치 조절 */
+	  text-align: center;
+	  font-size: 35px;
+	  font-weight: bold;
+	  color: yellow;
+	  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	}
+	
+	.howtotext {
+		position: absolute;
+		top : 23%;
+		font-size: 20px;
+		text-align: left;
+		color: white;
+		text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+	}
 	
 	.normalgamebtn {
 	  display: block;
@@ -454,6 +567,10 @@
 	  position: relative;
 	  text-align: center;
 	}
+	
+/*	.rankimage {
+		width: 70%;
+	}*/
 	
 	.rankimage img {
 	  display: block;
@@ -506,7 +623,6 @@
 		display: flex;
 		align-items: center;
 		justify-content: center;
-		cursor: pointer;
 		font-family: 'NeoDGM';
 		color: white;
 	}
@@ -650,9 +766,10 @@ header {
 
 
 .user-info a {
-	cursor: pointer;
 	text-decoration: none;
-	color: #333;
+	color:darkslategray;
+	font-weight: bold;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 	margin-left: 10px;
 }
 
@@ -687,73 +804,13 @@ main {
 	z-index: -1;
 }
 
-.rankimage img {
-	cursor: pointer;
+.rankgamebtn:hover .rankimage img,
+.normalgamebtn:hover .normalimage img {
+  filter: brightness(1.2);
 }
 
-.normalimage img {
-	cursor: pointer;
-}
-
-.normaltext {
-	cursor: pointer;
-}
-
-.ranktext {
-	cursor: pointer;
-}
-
-.close-modal img {
-	cursor: pointer;
-}
-
-/*.modal {
-	width: 70%;
-	height: 70%;
-	display: none;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
-    background-image: url('/img/modal-readme.png');
-    background-size: contain; 
-    background-repeat: no-repeat;
-    background-position: center;
-	z-index: 9999;
-}
-
-.modal-content {
-	text-align: center;
-	margin-top : 75px;
-}
-
-.modal-content img {
-	width: 55%;
-	height: 45%;
-	padding: 7px;
-}
-
-.close-modal {
-	width: 92%;
-	height: 20px;
-	position: block;
-	display: flex;
-	justify-content: flex-end;
-}
-
-.close-modal img {
-	width: 20px;
-	height: 20px;
-	margin: 10px;
-}
-*/
-.modal-button {
-	background-color: #333;
-	color: #fff;
-	border: none;
-	padding: 10px 20px;
-	margin: 5px;
-	cursor: pointer;
-	font-family: 'NeoDGM';
+a {
+    text-decoration: none; 
+    color: inherit; 
 }
 

@@ -5,7 +5,6 @@ $(document).ready(function () {
 		if (selection == 'nickname') {
 			$('#modalselection').text('* 닉네임에 적용된 아이템을 변경하시겠어요? *');
 			$('.buyingwhat').text('변경하려는 아이템을 선택해주세요.');
-			$('.spanexplain').text('임시임시');
 			$('.moex').removeAttr('class').addClass('moex ' + $(this).data('item'));
 			$('#modal-container').removeAttr('class').addClass('one');
   			$('body').addClass('modal-active');
@@ -13,9 +12,16 @@ $(document).ready(function () {
   			$('.noc').text("돌아가기");
   		}
 	});
-
+	
+	$('.confirmuse').click(function() {
+		$('#useitem').val($(this).data('useitem'));
+		$('#nouseitem').val($(this).data('nouseitem'));
+		$('#itemuse').submit();
+	});
+	
 	$('.noc').click(function(){
-		$('#item').val('');
+		$('#itemuse').val('');
+		$('#itemnouse').val('');
   		$('#modal-container').addClass('out');
  		$('body').removeClass('modal-active');
 	});

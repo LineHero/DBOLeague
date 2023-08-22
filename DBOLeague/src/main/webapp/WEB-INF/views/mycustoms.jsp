@@ -24,7 +24,7 @@
 		<div id="stars2"></div>
 		<header>
 			<div id="home">
-				<span class="cursorPointer headermenu" onclick="goPage('maintest')">메인
+				<span class="cursorPointer headermenu" onclick="goPage('main')">메인
 					화면으로</span>
 			</div>
 			<div id="title">
@@ -56,17 +56,40 @@
 					<div class="items">
 						<div class="shoptitle">
 							<div class="inboxtitle">내 커스터마이징 아이템</div>
-							<div class="expamount" data-exp="${exp}" id="expamount">${exp} exp. 보유중</div>
+							<div class="expamount" data-exp="${exp}" id="expamount">${exp}
+								exp. 보유중</div>
 						</div>
-						<div class="itemblocks cursorPointer openmodal"
-							data-item="nickname">
-							<div class="item cursorPointer openmodal" data-item="nickname">
-								<span>닉네임</span>
-							</div>
-							<div class="itemname cursorPointer openmodal jumping" data-item="nickname"><span>jumping 아이템 적용중</span></div>
-							<div class="itemexplain cursorPointer openmodal" data-item="nickname">클릭해서 적용중인 아이템을 변경해보세요!</div>
-							
-						</div>
+						<c:choose>
+							<c:when test="${nicknameon eq 'none'}">
+								<div class="itemblocks cursorPointer openmodal"
+									data-item="nickname">
+									<div class="item cursorPointer openmodal" data-item="nickname">
+										<span>닉네임</span>
+									</div>
+									<div class="itemname cursorPointer openmodal"
+										data-item="nickname">
+										<span>아무런 아이템도 적용중이 아닙니다...</span>
+									</div>
+									<div class="itemexplain cursorPointer openmodal"
+										data-item="nickname">클릭해서 적용중인 아이템을 변경해보세요!</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks cursorPointer openmodal"
+									data-item="nickname">
+									<div class="item cursorPointer openmodal" data-item="nickname">
+										<span>닉네임</span>
+									</div>
+									<div class="itemname cursorPointer openmodal ${nicknameon}"
+										data-item="nickname">
+										<span>${nicknameon} 아이템 적용중</span>
+									</div>
+									<div class="itemexplain cursorPointer openmodal"
+										data-item="nickname">클릭해서 적용중인 아이템을 변경해보세요!</div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+
 					</div>
 					<div>
 						<img src="../img/Sprite-0002.png" alt=""

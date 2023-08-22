@@ -105,6 +105,13 @@ public class MyItemShopController {
 			int exp = service.getexp(dto.getMember_id());
 			mv.addObject("exp", exp);
 			List<MyItemsDTO> myitems = service.getallmynickitem(dto.getMember_id());
+			String nicknameon = "none";
+			for (MyItemsDTO myItemsDTO : myitems) {
+				if (myItemsDTO.isNicknameitem_use()) {
+					nicknameon = myItemsDTO.getNicknameitem_name();
+				}
+			}
+			mv.addObject("nicknameon", nicknameon);
 			mv.addObject("myitems", myitems);
 		} else {
 			RedirectView rv = new RedirectView();
@@ -116,6 +123,55 @@ public class MyItemShopController {
 		mv.addObject("nowpage", "customs");
 		mv.setViewName("mycustoms");
 		return mv;
+		
+	}
+	
+	@PostMapping("/itemuse")
+	public ModelAndView itemuse(
+			@SessionAttribute(name = "userlogin", required = false)MemberDTO dto,
+			HttpServletResponse response, @RequestBody String item) {
+		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+		response.setDateHeader("Expires", 0); // Proxies.
+		
+		ModelAndView mv = new ModelAndView();
+		
+		if (dto != null) {
+			if (item != null) {
+				String[] parts = item.split("&");
+				String[] parts1 = parts[0].split("=");
+				String[] parts2 = parts[1].split("=");
+				if (parts2[1].equals("none")) {
+					MyItemsDTO midto = new MyItemsDTO();
+					midto.setMember_id(dto.getMember_id());
+					midto.setNicknameitem_name(parts1[1]);
+					int on = service.onnick(midto);
+				} else {
+					if (parts1[1].equals(parts2[1])) {
+						MyItemsDTO midto = new MyItemsDTO();
+						midto.setMember_id(dto.getMember_id());
+						midto.setNicknameitem_name(parts2[1]);
+						int off = service.offnick(midto);
+					} else {
+						MyItemsDTO midto = new MyItemsDTO();
+						midto.setMember_id(dto.getMember_id());
+						midto.setNicknameitem_name(parts2[1]);
+						int off = service.offnick(midto);
+						midto.setNicknameitem_name(parts1[1]);
+						int on = service.onnick(midto);
+					}
+				}
+			}			
+			RedirectView rv = new RedirectView();
+			rv.setUrl("/mycustoms");
+			mv.setView(rv);
+			return mv;
+		} else {
+			RedirectView rv = new RedirectView();
+			rv.setUrl("/login");
+			mv.setView(rv);
+			return mv;
+		}
 		
 	}
 

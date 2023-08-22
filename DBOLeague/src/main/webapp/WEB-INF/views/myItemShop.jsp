@@ -24,7 +24,7 @@
         <div id="stars2"></div>
 		<header>
 			<div id="home">
-				<span class="cursorPointer headermenu" onclick="goPage('maintest')">메인
+				<span class="cursorPointer headermenu" onclick="goPage('main')">메인
 					화면으로</span>
 			</div>
 			<div id="title">
@@ -89,6 +89,21 @@
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
+							<c:when test="${empty fire}">
+								<div class="itemblocks cursorPointer openmodal" data-item="fire" data-price="7000">
+									<div class="item cursorPointer fire openmodal" data-item="fire" data-price="7000"><span>fire</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="fire" data-price="7000">불타는 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="fire" data-price="7000">불이야! 닉네임이 불타게 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="fire" data-price="7000">7000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
 							<c:when test="${empty rainbow}">
 								<div class="itemblocks cursorPointer openmodal" data-item="rainbow" data-price="10000">
 									<div class="item cursorPointer rainbow openmodal" data-item="rainbow" data-price="10000"><span>rainbow</span></div>
@@ -104,12 +119,12 @@
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
-							<c:when test="${empty neon}">
-								<div class="itemblocks cursorPointer openmodal" data-item="neon" data-price="10000">
-									<div class="item cursorPointer neon openmodal" data-item="neon" data-price="10000"><span>neon</span></div>
-									<div class="itemname cursorPointer openmodal" data-item="neon" data-price="10000">네온 무지개색 닉네임</div>
-									<div class="itemexplain cursorPointer openmodal" data-item="neon" data-price="10000">닉네임을 네온 무지개로 만들어보세요!</div>
-									<div class="itemprice cursorPointer openmodal" data-item="neon" data-price="10000">10000 exp.</div>
+							<c:when test="${empty retroflicker}">
+								<div class="itemblocks cursorPointer openmodal" data-item="retroflicker" data-price="15000">
+									<div class="item cursorPointer retroflicker openmodal" data-item="retroflicker" data-price="15000"><span>retro</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="retroflicker" data-price="15000">레트로 플리커 효과 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="retroflicker" data-price="15000">닉네임을 레트로 CRT 감성으로 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="retroflicker" data-price="15000">15000 exp.</div>
 								</div>
 							</c:when>
 							<c:otherwise>
@@ -118,6 +133,52 @@
 								</div>
 							</c:otherwise>
 						</c:choose>
+						<c:choose>
+							<c:when test="${empty neon}">
+								<div class="itemblocks cursorPointer openmodal" data-item="neon" data-price="15000">
+									<div class="item cursorPointer neon openmodal" data-item="neon" data-price="15000"><span>neon</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="neon" data-price="15000">네온 무지개색 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="neon" data-price="15000">닉네임을 네온 무지개로 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="neon" data-price="15000">15000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty glitchC}">
+								<div class="itemblocks cursorPointer openmodal" data-item="glitchC" data-price="20000">
+									<div class="item cursorPointer glitchC openmodal" data-item="glitchC" data-price="20000"><span>glitch</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="glitchC" data-price="20000">글리치 효과 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="glitchC" data-price="20000">닉네임을 고장난 것처럼 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="glitchC" data-price="20000">20000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
+							<c:when test="${empty citynight}">
+								<div class="itemblocks cursorPointer openmodal" data-item="citynight" data-price="20000">
+									<div class="item cursorPointer citynight openmodal" data-item="citynight" data-price="20000"><span>citynight</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="citynight" data-price="20000">저녁 도시 효과 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="citynight" data-price="20000">닉네임을 세련되고 빛나게 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="citynight" data-price="20000">20000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 					<div>
 						<img src="../img/Sprite-0002.png" alt=""
