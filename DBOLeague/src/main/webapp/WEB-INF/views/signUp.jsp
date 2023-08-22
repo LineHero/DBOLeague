@@ -179,7 +179,7 @@ $(document).ready(function() {
 					});
 			
 			function addMember() {
-				const teamList = ["자바 스크립터즈", "메타 리액터즈", "Team C", "Team D"];
+				const teamList = ["자바 스크립터즈", "메타 리액터즈", "몬티 파이썬즈", "웹 와일드 피처스", "알고리즘 에이서스", "데이터 슬래셔스", "루비 릴리퍼스", "디버그 파티", "레스폰시브 리더스", "코드 캐년스"];
 				// 랜덤으로 팀 선택
 	            const randomTeamIndex = Math.floor(Math.random() * teamList.length);
 	            const member_team = teamList[randomTeamIndex];
