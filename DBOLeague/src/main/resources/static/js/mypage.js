@@ -4,7 +4,7 @@
 
 // 메일 화면으로 클릭
 $("#home").click(function() {
-	location.href = "/maintest";
+	location.href = "/main";
 }); //click
 
 // 마이페이지 클릭
@@ -66,28 +66,32 @@ $("#latest-result td.btns").click(function() {
 			dataType: "json",
 			method: "post",
 			success: function(response) {
-				// 게임 정답을 html에 보여줌
-				$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[recordIdx].single_answer}`);
-				$("#record-detail tbody").html(`
-					<tr>
-						<td style="width: 20%;">회차</td>
-	    			<td style="width: 50%;">도전한 수</td>
-	    			<td style="width: 30%;">결과</td>
-					</tr>
-				`);
-				for (let i = 0; i < response.singleDetails.length; i++) {
-					// 게임 회차별 결과를 html에 보여줌
-					$("#record-detail tbody").append(`<tr></tr>`);
-					$("#record-detail tbody tr").eq(i + 1).append(`
-						<td>${response.singleDetails[i].innings_count}</td>
-						<td>${response.singleDetails[i].innings_chall}</td>
-						<td>
-							<span style="color: yellow">${response.singleDetails[i].innings_strike}S <span>
-							<span style="color: green">${response.singleDetails[i].innings_ball}B <span>
-						</td>
+				if (response.noSession !== null) {
+					location.href = response.noSession;
+				} else {
+					// 게임 정답을 html에 보여줌
+					$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[recordIdx].single_answer}`);
+					$("#record-detail tbody").html(`
+						<tr>
+							<td style="width: 20%;">회차</td>
+		    			<td style="width: 50%;">도전한 수</td>
+		    			<td style="width: 30%;">결과</td>
+						</tr>
 					`);
-				}
-			}, 
+					for (let i = 0; i < response.singleDetails.length; i++) {
+						// 게임 회차별 결과를 html에 보여줌
+						$("#record-detail tbody").append(`<tr></tr>`);
+						$("#record-detail tbody tr").eq(i + 1).append(`
+							<td>${response.singleDetails[i].innings_count}</td>
+							<td>${response.singleDetails[i].innings_chall}</td>
+							<td>
+								<span style="color: yellow">${response.singleDetails[i].innings_strike}S <span>
+								<span style="color: green">${response.singleDetails[i].innings_ball}B <span>
+							</td>
+						`);
+					} //for
+				} //else
+			}, //success
 			error: function(request,error) {
 	    	alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	    	console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
