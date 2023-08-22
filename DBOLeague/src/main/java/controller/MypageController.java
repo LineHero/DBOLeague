@@ -36,7 +36,7 @@ public class MypageController {
 	public ModelAndView changeNick(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("userlogin") == null) {
-			mv.setViewName("redirect:/maintest");
+			mv.setViewName("redirect:/main");
 		}
 		mv.setViewName("changeNick");
 		return mv;
@@ -69,7 +69,7 @@ public class MypageController {
 	public ModelAndView changePw(HttpSession session) {
 		ModelAndView mv = new ModelAndView();
 		if (session.getAttribute("userlogin") == null) {
-			mv.setViewName("redirect:/maintest");
+			mv.setViewName("redirect:/main");
 		}
 		mv.setViewName("changePw");
 		return mv;
@@ -137,7 +137,7 @@ public class MypageController {
 		ModelAndView mv = new ModelAndView();
 		// 만약 로그인한 회원이 아닌 경우 메인으로 redirect
 		if (session.getAttribute("userlogin") == null) {
-			mv.setViewName("redirect:/maintest");
+			mv.setViewName("redirect:/main");
 			return mv;
 		}
 		mv.setViewName("mypage");
@@ -173,17 +173,18 @@ public class MypageController {
 		return mv;
 	}
 	
-	// 최근 전적에 마우스 올리면 해당 전적의 상세 내용을 보여줌
+	// 최근 전적에서 상세전적 보기 버튼 누르면 해당 전적의 상세 내용을 보여줌
 	@PostMapping("/showRecordDetail")
 	@ResponseBody
 	public Map<String, Object> showRecordDetail(HttpSession session, int detailIdx) {
 		Map<String, Object> ajaxResult = new HashMap<>();
 		if (session.getAttribute("userlogin") == null) {
-			ajaxResult.put("", "redirect:/maintest");
+			ajaxResult.put("ajaxResult", -1);
 			return ajaxResult;
 		}
 		String member_id = ((MemberDTO) session.getAttribute("userlogin")).getMember_id();
 		Map<String, Object> serviceResult = service.getLatestRecords(member_id, detailIdx);
+		ajaxResult.put("ajaxResult", 1);
 		ajaxResult.put("singleRecords", serviceResult.get("singleRecords"));
 		ajaxResult.put("singleDetails", serviceResult.get("singleDetails"));
 		return ajaxResult;

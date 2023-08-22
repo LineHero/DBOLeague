@@ -35,7 +35,12 @@
         <div id="main-header">
           <div id="user-info" class="font-M">
             <ul>
-              <li>Lv${member_lv}. ${memberDto.member_nick}</li>
+              <li>
+	              Lv${member_lv}. 
+	              <div style="display: inline;">
+	              	<span>${memberDto.member_nick}</span>
+	             	</div>
+             	</li>
               <li>소속팀 : ${memberDto.member_team}</li>
               <li>이메일 : ${memberDto.member_email}</li>
               <li style="display: flex; align-items: center">
