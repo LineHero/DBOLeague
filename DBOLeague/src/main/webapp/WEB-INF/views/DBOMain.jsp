@@ -20,9 +20,9 @@
   <header>
     <div class="header-content">
 		<c:choose>
-		    <c:when test="${not empty sessionScope.member_id}">
+		    <c:when test="${not empty loginNick}">
 		        <div class="user-info font-M">
-		            환영합니다, ${sessionScope.member_id} / <a href="mypage"> 마이페이지 </a>
+		            환영합니다, ${loginNick} / <a href="mypage"> 마이페이지 </a>
 		        </div>
 		    </c:when>
 		    <c:otherwise>
