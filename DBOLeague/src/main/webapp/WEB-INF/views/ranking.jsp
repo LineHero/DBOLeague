@@ -99,7 +99,7 @@
 										<c:choose>
 											<c:when test="${not empty dto.nicknameitem_name}">
 												<div class="place"><span> ${status.count} </span></div>
-												<div class="nickname  ${dto.nicknameitem_name}"><span>${dto.member_nick}</span></div>
+												<div class="nickname ${dto.nicknameitem_name}"><span>${dto.member_nick}</span></div>
 												<div class="expamount"><span>${dto.exp_total} exp.</span></div>
 											</c:when>
 											<c:otherwise>
