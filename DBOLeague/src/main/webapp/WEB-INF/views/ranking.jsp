@@ -21,7 +21,7 @@
         <div id="stars2"></div>
 		<header>
 			<div id="home">
-				<span class="cursorPointer headermenu" onclick="goPage('maintest')">메인 화면으로</span>
+				<span class="cursorPointer headermenu" onclick="goPage('main')">메인 화면으로</span>
 			</div>
 			<div id="title">
 				<span>DBO LEAGUE - Personal Ranking</span>
