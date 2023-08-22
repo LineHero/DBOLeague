@@ -179,11 +179,12 @@ public class MypageController {
 	public Map<String, Object> showRecordDetail(HttpSession session, int detailIdx) {
 		Map<String, Object> ajaxResult = new HashMap<>();
 		if (session.getAttribute("userlogin") == null) {
-			ajaxResult.put("noSession", "/main");
+			ajaxResult.put("ajaxResult", -1);
 			return ajaxResult;
 		}
 		String member_id = ((MemberDTO) session.getAttribute("userlogin")).getMember_id();
 		Map<String, Object> serviceResult = service.getLatestRecords(member_id, detailIdx);
+		ajaxResult.put("ajaxResult", 1);
 		ajaxResult.put("singleRecords", serviceResult.get("singleRecords"));
 		ajaxResult.put("singleDetails", serviceResult.get("singleDetails"));
 		return ajaxResult;

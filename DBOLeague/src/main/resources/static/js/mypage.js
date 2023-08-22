@@ -43,7 +43,7 @@ $("#delete-member-btn").click(function() {
 				if (response.deleteResult === -1) alert("세션이 만료되어 로그아웃 되었습니다.");
 				else if (response.deleteResult === 1) {
 					alert("정상적으로 탈퇴 처리되었습니다.");
-					location.href = "/maintest";
+					location.href = "/main";
 				} else alert("알 수 없는 이유로 탈퇴가 처리되지 않았습니다.");
 			},
 			error: function(request,error) {
@@ -66,9 +66,10 @@ $("#latest-result td.btns").click(function() {
 			dataType: "json",
 			method: "post",
 			success: function(response) {
-				if (response.noSession !== null) {
-					location.href = response.noSession;
-				} else {
+				if (response.ajaxResult === -1) {
+					alert("세션이 만료되어 로그아웃 되었습니다.");
+					location.href = "/main";
+				} else if (response.ajaxResult === 1) {
 					// 게임 정답을 html에 보여줌
 					$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[recordIdx].single_answer}`);
 					$("#record-detail tbody").html(`
