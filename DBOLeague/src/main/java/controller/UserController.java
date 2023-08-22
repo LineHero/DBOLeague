@@ -77,14 +77,15 @@ public class UserController {
 				session.setAttribute("userlogin", medto);
 				
 				String referer = request.getHeader("Referer"); 
+
 				return "redirect:"+ referer;
 			} else {
 				m.addAttribute("loginfail", "아이디 또는 비밀번호가 맞지 않습니다.");
 				return "signIn";
 			}
+		} else {
+			return "redirect:/main";
 		}
-		
-		 return "redirect:/main";
 	}
 	
 		// 로그아웃
