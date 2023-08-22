@@ -7,8 +7,8 @@
 }
 
 *{
-	margin: 0px;
-    padding: 0px;
+	margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
@@ -55,7 +55,7 @@ body {
 .formindiv>p {
 	font-size : 1.031rem;
 	line-height : 0.75rem;
-	margin:0.5rem 0px 0.5rem 0.125rem; /*위 우 아래 좌*/
+	margin:0.5rem 0 0.5rem 0.125rem; /*위 우 아래 좌*/
 	color: white;
 }
 

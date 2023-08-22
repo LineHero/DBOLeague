@@ -161,7 +161,6 @@ $(document).ready(function() {
 								if ($.trim(response.result) === "ok") {
 									addMember();
 									loginCustomAlert("환영합니다. 성공적으로 가입되었습니다!");
-								location.href = "/main";
 								} else if ($.trim(response.result) === "one_id") {
 									showCustomAlert("이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.");
 				                } else if ($.trim(response.result) === "one_email") {
@@ -205,21 +204,20 @@ $(document).ready(function() {
 				});
 			}
 			
-			// 커스텀 alert 함수
+			// 커스텀 로그인 성공 alert 함수
 		    function loginCustomAlert(message) {
 		        $("#loginAlert p").text(message);
 		        $("#loginAlert").removeClass("hidden");
+		        
+		        setTimeout(function() {
+		        // 일정 시간 후에 리다이렉트 실행
+		        window.location.href = "/login";
+		    }, 1000);
+		        
 		    }
-
-		    function closeLoginAlert() {
-		        $("#loginAlert").addClass("hidden");
-		    }
-
-		    $("#loginAlertButton").on("click", function() {
-		    	closeLoginAlert();
-		    });
+		    
 			
-			// 커스텀 alert 함수
+			// 커스텀 오류 메시지 alert 함수
 		    function showCustomAlert(message) {
 		        $("#pixelAlert p").text(message);
 		        $("#pixelAlert").removeClass("hidden");
@@ -241,9 +239,6 @@ $(document).ready(function() {
 		<div id="loginAlert" class="hidden">
 			<img src="/img/face-happy.svg" style="width: 30px; height: 30px;">
 			<p></p>
-			<button id="loginAlertButton" class="cursorPointer close-button">
-				<img src="/img/times.svg" style="width: 20px; height: 20px;">
-			</button>
 		</div>
 		<div id="pixelAlert" class="hidden">
 			<img src="/img/face-angry.svg" style="width: 30px; height: 30px;">
