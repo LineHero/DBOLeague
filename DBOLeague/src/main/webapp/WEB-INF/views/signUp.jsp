@@ -8,10 +8,12 @@
 <link rel="stylesheet" href="css/signUp.css">
 <link href="../css/cursor.css" rel="stylesheet" type="text/css" />
 <link href="../css/stars.css" rel="stylesheet" type="text/css" />
+<link rel="stylesheet" type="text/css" href="../css/pixel-alert.css">
 </head>
 <script src="js/jquery-3.6.4.min.js"></script>
 <script>
 $(document).ready(function() {
+	
 	const id = document.getElementById("member_id");
 	const pw = document.getElementById("member_pw");
 	const email = document.getElementById("member_email");
@@ -99,11 +101,8 @@ $(document).ready(function() {
   	        emailError.hide();
   	    }
   	});
-      
-	
-			$("#join_submit_btn").on(
-					'click',
-					function(e) {
+  	  
+			$("#join_submit_btn").on('click', function(e) {
 						e.preventDefault();
 						
 						var member_id = $("#member_id").val();
@@ -161,14 +160,13 @@ $(document).ready(function() {
 							success : function(response) {
 								if ($.trim(response.result) === "ok") {
 									addMember();
-									alert("가입되었습니다!");
-								location.href = "/maintest";
+									loginCustomAlert("환영합니다. 성공적으로 가입되었습니다!");
 								} else if ($.trim(response.result) === "one_id") {
-				                    alert("이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.");
+									showCustomAlert("이미 존재하는 아이디입니다. 다른 아이디를 입력해주세요.");
 				                } else if ($.trim(response.result) === "one_email") {
-				                    alert("이미 존재하는 이메일입니다. 다른 이메일을 입력해주세요.");
+				                	showCustomAlert("이미 존재하는 이메일입니다. 다른 이메일을 입력해주세요.");
 				                } else {
-				                    alert("아이디와 이메일이 이미 존재합니다.");
+				                	showCustomAlert("아이디와 이메일이 이미 존재합니다.");
 				                }
 							},
 							error : function(request, status, e) {
@@ -181,7 +179,7 @@ $(document).ready(function() {
 					});
 			
 			function addMember() {
-				const teamList = ["Team A", "Team B", "Team C", "Team D"];
+				const teamList = ["자바 스크립터즈", "메타 리액터즈", "Team C", "Team D"];
 				// 랜덤으로 팀 선택
 	            const randomTeamIndex = Math.floor(Math.random() * teamList.length);
 	            const member_team = teamList[randomTeamIndex];
@@ -205,12 +203,50 @@ $(document).ready(function() {
 		    	    }
 				});
 			}
+			
+			// 커스텀 로그인 성공 alert 함수
+		    function loginCustomAlert(message) {
+		        $("#loginAlert p").text(message);
+		        $("#loginAlert").removeClass("hidden");
+		        
+		        setTimeout(function() {
+		        // 일정 시간 후에 리다이렉트 실행
+		        window.location.href = "/login";
+		    }, 1000);
+		        
+		    }
+		    
+			
+			// 커스텀 오류 메시지 alert 함수
+		    function showCustomAlert(message) {
+		        $("#pixelAlert p").text(message);
+		        $("#pixelAlert").removeClass("hidden");
+		    }
+
+		    function closeCustomAlert() {
+		        $("#pixelAlert").addClass("hidden");
+		    }
+
+		    $("#customAlertButton").on("click", function() {
+		        closeCustomAlert();
+		    });
 });
 </script>
 <body>
 	<div class="wrapper">
 		<div id="stars"></div>
 		<div id="stars2"></div>
+		<div id="loginAlert" class="hidden">
+			<img src="/img/face-happy.svg" style="width: 30px; height: 30px;">
+			<p></p>
+		</div>
+		<div id="pixelAlert" class="hidden">
+			<img src="/img/face-angry.svg" style="width: 30px; height: 30px;">
+			<p></p>
+			<button id="customAlertButton" class="cursorPointer close-button">
+				<img src="/img/times.svg" style="width: 20px; height: 20px;">
+			</button>
+		</div>
 		<div class="logo">
 			<a href="/main" class="cursorPointer">DBO League</a>
 		</div>
