@@ -42,5 +42,15 @@ public class MyItemsServiceImpl implements MyItemsService {
 		return dao.getallmynickitem(member_id);
 	}
 
+	@Override
+	public int onnick(MyItemsDTO dto) {
+		return dao.onnick(dto);
+	}
+
+	@Override
+	public int offnick(MyItemsDTO dto) {
+		return dao.offnick(dto);
+	}
+
 	
 }

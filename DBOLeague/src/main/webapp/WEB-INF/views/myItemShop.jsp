@@ -89,6 +89,21 @@
 							</c:otherwise>
 						</c:choose>
 						<c:choose>
+							<c:when test="${empty fire}">
+								<div class="itemblocks cursorPointer openmodal" data-item="fire" data-price="7000">
+									<div class="item cursorPointer fire openmodal" data-item="fire" data-price="7000"><span>fire</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="fire" data-price="7000">불타는 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="fire" data-price="7000">불이야! 닉네임이 불타게 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="fire" data-price="7000">7000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						<c:choose>
 							<c:when test="${empty rainbow}">
 								<div class="itemblocks cursorPointer openmodal" data-item="rainbow" data-price="10000">
 									<div class="item cursorPointer rainbow openmodal" data-item="rainbow" data-price="10000"><span>rainbow</span></div>
@@ -118,6 +133,22 @@
 								</div>
 							</c:otherwise>
 						</c:choose>
+						<c:choose>
+							<c:when test="${empty glitchC}">
+								<div class="itemblocks cursorPointer openmodal" data-item="glitchC" data-price="10000">
+									<div class="item cursorPointer glitchC openmodal" data-item="glitchC" data-price="10000"><span>glitch</span></div>
+									<div class="itemname cursorPointer openmodal" data-item="glitchC" data-price="10000">글리치 효과 닉네임</div>
+									<div class="itemexplain cursorPointer openmodal" data-item="glitchC" data-price="10000">닉네임을 고장난 것처럼 만들어보세요!</div>
+									<div class="itemprice cursorPointer openmodal" data-item="glitchC" data-price="10000">15000 exp.</div>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="itemblocks soldout">
+									<div class=""><p class="soldout">구매 완료 !!</p></div>
+								</div>
+							</c:otherwise>
+						</c:choose>
+						
 					</div>
 					<div>
 						<img src="../img/Sprite-0002.png" alt=""
