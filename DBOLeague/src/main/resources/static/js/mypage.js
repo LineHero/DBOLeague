@@ -54,14 +54,10 @@ $("#delete-member-btn").click(function() {
 	} //if
 }); //click
 
-// 최근 전적 행에 마우스 올릴 때
-let prevRecord = null;
-let recordIdx = null;
-$("#latest-result tr").mouseover(function(e) {
-	if (prevRecord === e.currentTarget) return;
-	$("#record-detail").css("display", "inline");
-	prevRecord = e.currentTarget;
-	recordIdx = e.currentTarget.id;
+// 상세전적 보기 버튼 클릭시
+$("#latest-result td.btns").click(function() {
+	let recordIdx = this.id;
+	$("#record-detail-wrapper").css("display", "inline");
 	$.ajax({
 			url: "/showRecordDetail",
 			data: {
@@ -72,25 +68,24 @@ $("#latest-result tr").mouseover(function(e) {
 			success: function(response) {
 				// 게임 정답을 html에 보여줌
 				$("#record-detail > p").eq(1).text(`정답 : ${response.singleRecords[recordIdx].single_answer}`);
+				$("#record-detail tbody").html(`
+					<tr>
+						<td style="width: 20%;">회차</td>
+	    			<td style="width: 50%;">도전한 수</td>
+	    			<td style="width: 30%;">결과</td>
+					</tr>
+				`);
 				for (let i = 0; i < response.singleDetails.length; i++) {
-					// 상세 전적을 마우스 위치에 띄움
-					$("#record-detail").css({
-						"top": e.screenY - 35,
-						"left": e.screenX,
-					}); //css
-					
 					// 게임 회차별 결과를 html에 보여줌
-					$("#record-detail tbody").append('<tr></tr>');
-					if ($("#record-detail tbody tr").eq(i + 1).children().length === 0) {
-						$("#record-detail tbody tr").eq(i + 1).append(`
-							<td>${response.singleDetails[i].innings_count}</td>
-							<td>${response.singleDetails[i].innings_chall}</td>
-							<td>
-								<span style="color: yellow">${response.singleDetails[i].innings_strike}S <span>
-								<span style="color: green">${response.singleDetails[i].innings_ball}B <span>
-							</td>
-						`);
-					}
+					$("#record-detail tbody").append(`<tr></tr>`);
+					$("#record-detail tbody tr").eq(i + 1).append(`
+						<td>${response.singleDetails[i].innings_count}</td>
+						<td>${response.singleDetails[i].innings_chall}</td>
+						<td>
+							<span style="color: yellow">${response.singleDetails[i].innings_strike}S <span>
+							<span style="color: green">${response.singleDetails[i].innings_ball}B <span>
+						</td>
+					`);
 				}
 			}, 
 			error: function(request,error) {
@@ -98,17 +93,29 @@ $("#latest-result tr").mouseover(function(e) {
 	    	console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 	    }
 		}); //ajax
-}); //mouseover
-// 최근 전적 행에서 마우스 내릴 때
-$("#latest-result tr").mouseout(function() {
-	$("#record-detail").css("display", "none");
-	prevRecord = null;
-	recordIdx = null;
-	$("#record-detail tbody tr").each(function(index, item) {
-		if (index !== 0) {
-			$(item).remove();
-		}
-	});
-}); //mouseover
-$("#latest-result tr").first().off("mouseover");
-$("#latest-result tr").first().off("mouseout");
+}); //click
+
+// 상세전적, 보기 버튼 외 영역 클릭시 #record-detail-wrapper 사라지게 하기
+var html = document.querySelector("html");
+html.addEventListener('click', clickHtmlEvent);
+
+function clickHtmlEvent(event) {
+	var target = event.target;
+	
+	// 1. #latest-result .btns 이면 pass
+	let latestResultBtns = $("#latest-result .btns");
+	for (let i = 0; i < latestResultBtns.length; i++) {
+		if (target == latestResultBtns[i]) return;
+	}
+	
+	// 2. #record-detail-wrapper 이면 pass
+	if (target == $("#record-detail-wrapper")[0]) return;
+	
+	// 3. #record-detail-wrapper의 자손 태그이면 pass
+	let recordDetailWrappers = $("#record-detail-wrapper *");
+	for (let i = 0; i < recordDetailWrappers.length; i++) {
+		if (target == recordDetailWrappers[i]) return;
+	}
+	
+	$("#record-detail-wrapper").css("display", "none");
+}

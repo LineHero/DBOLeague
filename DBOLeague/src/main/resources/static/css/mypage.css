@@ -26,6 +26,7 @@
  }
 
 body {
+	position: relative;
 	width: 1920px;
   margin: 0 auto;
   display: flex;
@@ -234,8 +235,12 @@ section > div {
 #play-stat table > tbody > tr:nth-child(even) {
 	height: 80px;
 }
+#record-detail-wrapper {
+	position: absolute; 
+	top: 679px;
+	right: 236px;
+}
 #record-detail {
-	position: absolute;
 	width: 200px;
 	height: 269px;
 	background-color: black;
@@ -253,6 +258,7 @@ section > div {
 	color: white;
 	border-collapse: separate;
 	border-spacing: 2px;
+	font-size: 15px;
 }
 #record-detail tbody {
 	width: 90%;
