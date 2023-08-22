@@ -114,15 +114,17 @@
 	                <tbody>
 	                  <tr class="font-M" style="height: 45px;">
 	                    <td>결과</td>
-	                    <td>도전 회차</td>
+	                    <td>총회차</td>
 	                    <td>도전 날짜</td>
+	                    <td>상세전적</td>
 	                  </tr>
 	                  <c:if test="${!empty singleRecords}">
 		                	<c:forEach items="${singleRecords}" var="record" varStatus="vs">
-		                		<tr id="${vs.index}">
+		                		<tr>
 	               					<td>${record.single_result}</td>
 	                				<td>${record.single_all}회</td>
 	                				<td>${fn:split(record.exp_date, ".")[0]}</td>
+	                				<td id="${vs.index}" class="btns" style="border-radius: 0px">보기</td>
                 				</tr>
 		                	</c:forEach>
 	                	</c:if>
@@ -134,19 +136,15 @@
         </div>
       </main>
     </div>
-    <div id="record-detail" style="display: none">
-    	<p style="margin: 0px; padding: 3px 3px 3px 10px;">전적 상세내용</p>
-    	<p style="margin: 0px; padding: 3px 3px 3px 10px;"></p>
-    	<table>
-    		<tbody>
-	    		<tr>
-	    			<td style="width: 20%;">회차</td>
-	    			<td style="width: 50%;">도전한 수</td>
-	    			<td style="width: 30%;">결과</td>
-	    		</tr>
-    		</tbody>
-    	</table>
-    </div>
+    <div id="record-detail-wrapper" style="display: none">
+	    <div id="record-detail">
+	    	<p style="margin: 0px; padding: 3px 3px 3px 10px;">전적 상세내용</p>
+	    	<p style="margin: 0px; padding: 3px 3px 3px 10px;"></p>
+	    	<table>
+	    		<tbody></tbody>
+	    	</table>
+	    </div>
+	  </div>
   </body>
   <script src="/js/mypage.js"></script>
 </html>

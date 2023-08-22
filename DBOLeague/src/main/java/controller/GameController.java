@@ -36,6 +36,7 @@ public class GameController {
 			mv.addObject("single_id",single_id);
 			mv.addObject("member_id",medto.getMember_id());
 		}
+		mv.addObject("mode",mode);
 		mv.setViewName("game");
 		return mv;
 	}
