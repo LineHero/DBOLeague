@@ -37,6 +37,8 @@
 #### 랭킹 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%9E%AD%ED%82%B9%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
 - 
 #### 메인 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%F0%9F%93%8C%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
-- 
+- 게임 모드 선택 및 플레이
+- 게임 설명 열람
+- Session 유무에 따라서 Header 정보 변경
 #### 게임 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EA%B2%8C%EC%9E%84-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
 - 
