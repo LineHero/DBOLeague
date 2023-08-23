@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>DBO 개인 랭킹</title>
+<title>커스텀 아이템 상점</title>
 <script src="../js/jquery-3.6.4.min.js"></script>
 <link href="../css/myItemShop.css" rel="stylesheet" type="text/css" />
 <link href="../css/myItemShopmodal.css" rel="stylesheet" type="text/css" />
