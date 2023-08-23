@@ -103,7 +103,7 @@
 		            			<td>${memberDto.member_win}회</td>
 		            		</tr>
 		            		<tr>
-		            			<td>총 획득한 경험치</td>
+		            			<td>보유한 경험치</td>
 		            			<td>승률</td>
 		            		</tr>
 		            		<tr>
