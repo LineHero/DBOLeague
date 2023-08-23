@@ -27,7 +27,7 @@
 - 게임 모드 선택 및 플레이
 - 게임 설명 열람
 - Session 유무에 따라서 Header 정보 변경
-- #### 회원가입 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85" >상세보기 - WIKI 이동</a>
+#### 회원가입 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85" >상세보기 - WIKI 이동</a>
 - ID & EMAIL 중복 체크
 - 회원가입 시 10개의 팀에서 랜덤으로 1개의 팀에 회원 배정
 #### 로그인 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%A1%9C%EA%B7%B8%EC%9D%B8" >상세보기 - WIKI 이동</a>
