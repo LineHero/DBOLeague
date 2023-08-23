@@ -22,6 +22,11 @@
 - **Database** : Mysql
 - **ORM** : Mybatis
 
+## 💻ERD
+
+![erd](https://github.com/ha-neu1/DBOLeague/assets/107821879/41e09627-93d5-4115-b057-161dbdebd1fb)
+
+
 ## 📌 주요 기능
 #### 메인 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
 - 게임 모드 선택 및 플레이
