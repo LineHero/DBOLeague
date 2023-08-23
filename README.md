@@ -30,7 +30,10 @@
 - ID & EMAIL 중복 체크
 - 회원가입 시 10개의 팀에서 랜덤으로 1개의 팀에 회원 배정
 #### 마이 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%A7%88%EC%9D%B4-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
-- 
+- 회원 정보 표시
+- 닉네임, 비밀번호 변경
+- 회원탈퇴
+- 게임 전적, 전적 상세보기
 #### 랭킹 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%9E%AD%ED%82%B9%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
 - 
 #### 메인 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%F0%9F%93%8C%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
