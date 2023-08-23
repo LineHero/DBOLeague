@@ -34,7 +34,11 @@
 - 닉네임, 비밀번호 변경
 - 회원탈퇴
 - 게임 전적, 전적 상세보기
-#### 랭킹 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%9E%AD%ED%82%B9%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
+#### 커스텀 커서 & 로딩 화면 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%9E%AD%ED%82%B9%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
+-
+#### 커스터마이징 아이템 관리 & 상점 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%9E%AD%ED%82%B9%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
+-
+#### 랭킹 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%9E%AD%ED%82%B9%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
 - 
 #### 메인 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EB%A9%94%EC%9D%B8-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
 - 게임 모드 선택 및 플레이
