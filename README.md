@@ -41,4 +41,4 @@
 - 게임 설명 열람
 - Session 유무에 따라서 Header 정보 변경
 #### 게임 페이지 - <a href="https://github.com/ha-neu1/DBOLeague/wiki/%EA%B2%8C%EC%9E%84-%ED%8E%98%EC%9D%B4%EC%A7%80" >상세보기 - WIKI 이동</a>
-- 
+- 게임 플레이
