@@ -162,10 +162,22 @@ h5 {
 	width:25rem;
 	height:3.125rem;
 	margin-top:0.938rem;
-	margin-bottom:2.5rem;
+	/* margin-bottom:0.8rem; */
 }
 
 #login_submit_btn:hover {
 	border: 0.375rem groove #39FF14;
 	color:#39FF14;
+}
+
+.joinPage {
+	font-size: 0.75rem;
+	margin-bottom:2.5rem;
+	color:white;
+	text-decoration: none;
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	margin-top:0.8rem;
+	margin-bottom:0.8rem;
 }

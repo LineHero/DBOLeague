@@ -43,6 +43,7 @@
 					<h5>${loginfail}</h5>
 					<div id="Error" class="error"></div>
 					<button type="button" id="login_submit_btn" class="cursorPointer">로그인</button>
+					<a href="/join" class="joinPage">이미 회원가입을 하셨다면? 회원가입</a>
 				</div>
 			</div>
 		</form>
