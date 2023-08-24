@@ -32,40 +32,37 @@
 		    </c:otherwise>
 		</c:choose>
     </div>
-
   </header>
   
  	<main>
 	    <div class="main-background">
-	    
-	    	<div id="modal" class="modal">
-	    		<div class="close-modal">
-			      	<img src="/img/xbutton.png" class="cursorPointer">
-			    </div>
-			    <div class="modal-content">
-				    <div class="rankgamebtn">
-				        <div class="rankimage">
-				            <a href="/game?mode=rank" class="cursorPointer" id="rankLinkImage">
-				                <img src="/img/modal-button.png/" class="cursorPointer">
-				            </a>
-				        </div>
-				        
-				        <div class="ranktext cursorPointer" >
-				            <a href="/game?mode=rank" class="cursorPointer" id="rankLinkText">
-				                랭킹게임
-				            </a>
-				        </div>
-				    </div>
-			    	<div class="normalgamebtn">
-			    		<a href = "/game">
-				    		<div class="normalimage">
+			<div id="modal" class="modal">
+				<div class="close-modal">
+					<img src="/img/xbutton.png" class="cursorPointer">
+				</div>
+				<div class="modal-content">
+					<div class="rankgamebtn">
+						<div class="rankimage">
+							<a href="/game?mode=rank" class="cursorPointer" id="rankLinkImage">
+								<img src="/img/modal-button.png/" class="cursorPointer">
+							</a>
+						</div>
+						<div class="ranktext cursorPointer" >
+							<a href="/game?mode=rank" class="cursorPointer" id="rankLinkText">
+								랭킹게임
+							</a>
+						</div>
+					</div>
+					<div class="normalgamebtn">
+						<a href = "/game">
+							<div class="normalimage">
 								<img src="/img/modal-button.png/" class="cursorPointer">
 							</div>
 							<div class="normaltext cursorPointer">일반게임</div>
 						</a>
 					</div>
-			    </div>
-	  		</div>
+				</div>
+			</div>
 
 	    	<div id="modal2" class="modal2">
 	    		<div class="close-modal2">
