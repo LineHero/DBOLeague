@@ -108,7 +108,7 @@ body {
   }
 } 
 
-@media all and (min-width:1280px) and (max-width: 2079px) { 
+/*@media all and (min-width:1280px) and (max-width: 2079px) { 
   body {
   	width: 1320px;
   }
@@ -173,3 +173,4 @@ body {
   	font-size: 4.7px;
   }
 }
+*/
